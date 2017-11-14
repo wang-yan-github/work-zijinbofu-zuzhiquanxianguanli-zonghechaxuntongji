@@ -1,0 +1,3 @@
+Template.gongdan.onRendered(function () {
+    
+});

@@ -1,0 +1,78 @@
+<template name="bofucxtj">
+
+    <div class="ibox-content m-b-sm border-bottom">
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_nd">年度</label>
+                    <select class="form-control" id="cxtj_nd">
+                        {{#each niandu}}
+                        <option value="{{year}}">20{{year}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_xmfc">项目名称</label>
+                    <input type="text" id="cxtj_xmfc" name="cxtj_xmfc" value="" placeholder="" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_xmzt">项目状态</label>
+                    <select name="cxtj_xmfl" id="cxtj_xmzt" class="form-control">
+                        {{#each xiangmuzt}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_xmfl">项目分类</label>
+                    <select name="cxtj_xmfl" id="cxtj_xmfl" class="form-control">
+                        {{#each xiangmufl}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_dwmc">单位名称</label>
+                    <input type="text" id="cxtj_dwmc" name="cxtj_dwmc" value="" placeholder="" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_fwlx">服务类型</label>
+                    <select name="cxtj_fwlx" id="cxtj_fwlx" class="form-control">
+                        {{#each fuwulx}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_spbh">审批表编号</label>
+                    <input type="text" id="cxtj_spbh" name="cxtj_dwmc" value="" placeholder="" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="cxtj_fwlx">操作</label>
+                    <button type="button" class=" btn btn-block  btn-primary" id="cxtj_cx">查询</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>

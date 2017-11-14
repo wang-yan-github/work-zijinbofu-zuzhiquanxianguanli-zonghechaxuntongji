@@ -1,0 +1,253 @@
+<template name="bofumx">
+
+    {{> pageHeading title='工程资金拨付明细'}}
+
+    <div class="wrapper wrapper-content">
+
+        {{> bofucxtj}}
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover dataTables-example footable table-stripped toggle-arrow-tiny">
+                                <thead>
+                                <tr>
+                                    <th data-toggle="true">项目名称</th>
+                                    <th>项目分类</th>
+                                    <th>年度</th>
+                                    <th>单位名称</th>
+                                    <th>服务类型</th>
+                                    <th data-hide="all"></th>
+                                    <th >填报人</th>
+                                    <th >初审人</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeA">
+                                    <td title="资金拨付系统">资金拨付系统</td>
+                                    <td title="养护工程">养护工程</td>
+                                    <td title="17">17</td>
+                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
+                                    <td title="甲供材料">甲供材料</td>
+                                    <td>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>状态</th>
+                                                <th title="万元">合同金额</th>
+                                                <th title="万元">质保金</th>
+                                                <th title="万元">支付情况</th>
+                                                <th title="万元">已累计拨付资金</th>
+                                                <th>确认支付时间</th>
+                                                <th>审核表及附件</th>
+                                                <th></th>
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><span class="label label-primary">第1次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="2017-10-10">2017-10-11</td>
+                                                <td>
+                                                    <!--<button type="button" class="form-control btn btn-outline" data-toggle="modal" data-target="#myModal">里仁拨付审批表</button>-->
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表</button>
+                                                    <!--<a href="#myModal" data-toggle="modal" data-target="#myModal">里仁拨付审批表</a>-->
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第一次拨付</span>-->
+                                                    <small>已拨付: 10%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 10%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="label label-primary">第2次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">20.000000</td>
+                                                <td title="2017-10-10">2017-10-12</td>
+                                                <td>
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表2</button>
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第二次拨付</span>-->
+                                                    <small>已拨付: 20%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 20%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="label label-primary">第3次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">30.000000</td>
+                                                <td title="2017-10-10">2017-10-13</td>
+                                                <td>
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表3</button>
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第三次拨付</span>-->
+                                                    <small>已拨付: 30%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 30%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                    <td title="李四">李四</td>
+                                    <td title="张三">张三</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td title="资金拨付系统">资金拨付系统2</td>
+                                    <td title="养护工程">养护工程2</td>
+                                    <td title="17">18</td>
+                                    <td title="江苏里仁有限公司">江苏里仁有限公司2</td>
+                                    <td title="甲供材料">施工</td>
+                                    <td>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>状态</th>
+                                                <th title="万元">合同金额</th>
+                                                <th title="万元">质保金</th>
+                                                <th title="万元">支付情况</th>
+                                                <th title="万元">已累计拨付资金</th>
+                                                <th>确认支付时间</th>
+                                                <th>审核表及附件</th>
+                                                <th></th>
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><span class="label label-primary">第1次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="2017-10-10">2017-10-11</td>
+                                                <td>
+                                                    <!--<button type="button" class="form-control btn btn-outline" data-toggle="modal" data-target="#myModal">里仁拨付审批表</button>-->
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表</button>
+                                                    <!--<a href="#myModal" data-toggle="modal" data-target="#myModal">里仁拨付审批表</a>-->
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第一次拨付</span>-->
+                                                    <small>已拨付: 10%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 10%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="label label-primary">第2次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">20.000000</td>
+                                                <td title="2017-10-10">2017-10-12</td>
+                                                <td>
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表2</button>
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第二次拨付</span>-->
+                                                    <small>已拨付: 20%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 20%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="label label-primary">第3次拨付</span></td>
+                                                <td title="100.000000">100.000000</td>
+                                                <td title="1.000000">1.000000</td>
+                                                <td title="10.000000">10.000000</td>
+                                                <td title="10.000000">30.000000</td>
+                                                <td title="2017-10-10">2017-10-13</td>
+                                                <td>
+                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">里仁拨付审批表3</button>
+                                                </td>
+                                                <td>
+                                                    <!--<span class="label label-primary">第三次拨付</span>-->
+                                                    <small>已拨付: 30%</small>
+                                                    <div class="progress progress-mini">
+                                                        <div style="width: 30%;" class="progress-bar"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                    <td title="李四">张三</td>
+                                    <td title="张三">李四</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--模态框 审批表及附件-->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息列表</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center pdf-toolbar">
+
+                        <div class="btn-group">
+                            <button id="prev" class="btn btn-white"><i class="fa fa-long-arrow-left"></i> <span class="hidden-xs">Previous</span></button>
+                            <button id="next" class="btn btn-white"><i class="fa fa-long-arrow-right"></i> <span class="hidden-xs">Next</span></button>
+                            <button id="zoomin" class="btn btn-white"><i class="fa fa-search-minus"></i> <span class="hidden-xs">Zoom In</span></button>
+                            <button id="zoomout" class="btn btn-white"><i class="fa fa-search-plus"></i> <span class="hidden-xs">Zoom Out</span></button>
+                            <button id="zoomfit" class="btn btn-white"> 100%</button>
+                            <span class="btn btn-white hidden-xs">Page: </span>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="page_num">
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-white" id="page_count">/ 22</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="text-center m-t-md">
+                        <canvas id="the-canvas" class="pdfcanvas border-left-right border-top-bottom b-r-md"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</template>
