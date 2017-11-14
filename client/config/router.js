@@ -35,7 +35,8 @@ FlowRouter.route('/gongchengzjbfhz', {
 
 
 /*通用功能模块*/
-var test = FlowRouter.route('/denglu', {
+FlowRouter.route('/denglu', {
+    name:'denglu',
     action: function() {
         BlazeLayout.render('blankLayout', {content: 'denglu'});
     }
@@ -48,7 +49,6 @@ FlowRouter.notFound = {
 };
 /*全局触发器*/
 FlowRouter.triggers.enter([function() {
-    console.log('全局触发器');
     if(Session.get('user') === undefined){
         FlowRouter.go('/denglu');
     }

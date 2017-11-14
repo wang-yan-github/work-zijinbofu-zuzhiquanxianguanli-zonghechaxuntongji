@@ -45,7 +45,7 @@ Template.topNavbar.events({
 
     'click #tuichudl': function (event) {
         event.preventDefault();
-        Session.set('user',undefined);
+        Session.clearAuth();
         FlowRouter.go('/denglu');
     }
 });
