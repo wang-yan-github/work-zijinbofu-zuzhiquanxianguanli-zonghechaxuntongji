@@ -4,28 +4,8 @@ FlowRouter.route('/', {
         FlowRouter.go('/denglu');
     }
 });
-/*综合查询统计*/
-/*项目资金拨付统计*/
-FlowRouter.route('/bofutj', {
-    action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofutj"});
-    }
-});
-/*综合查询统计*/
-/*项目资金拨付明细*/
-FlowRouter.route('/bofumx', {
-    action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofumx"});
-    }
-});
-/*综合查询统计*/
-/*项目资金拨付汇总*/
-FlowRouter.route('/bofuhz', {
-    action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofuhz"});
-    }
-});
 /*项目库管理模块*/
+
 /*工程资金拨付模块*/
 FlowRouter.route('/gongchengzjbf', {
     action: function() {
@@ -33,7 +13,26 @@ FlowRouter.route('/gongchengzjbf', {
     }
 });
 /*综合查询统计模块*/
+//项目资金拨付统计
+FlowRouter.route('/bofutj', {
+    action: function() {
+        BlazeLayout.render("mainLayout", {content: "bofutj"});
+    }
+});
+//项目资金拨付明细
+FlowRouter.route('/bofumx', {
+    action: function() {
+        BlazeLayout.render("mainLayout", {content: "bofumx"});
+    }
+});
+//项目资金拨付汇总
+FlowRouter.route('/bofuhz', {
+    action: function() {
+        BlazeLayout.render("mainLayout", {content: "bofuhz"});
+    }
+});
 /*系统管理模块*/
+
 /*通用功能模块*/
 var test = FlowRouter.route('/denglu', {
     action: function() {
