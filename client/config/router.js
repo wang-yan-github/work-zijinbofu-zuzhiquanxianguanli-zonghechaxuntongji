@@ -9,26 +9,26 @@ FlowRouter.route('/', {
 /*工程资金拨付模块*/
 FlowRouter.route('/gongchengzjbf', {
     action: function() {
-        BlazeLayout.render("mainLayout", {content: "gongchengzjbf"});
+        BlazeLayout.render('mainLayout', {content: 'gongchengzjbf'});
     }
 });
 /*综合查询统计模块*/
-//项目资金拨付统计
-FlowRouter.route('/bofutj', {
+//工程资金拨付统计
+FlowRouter.route('/gongchengzjbftj', {
     action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofutj"});
+        BlazeLayout.render('mainLayout', {content: 'gongchengzjbftj'});
     }
 });
-//项目资金拨付明细
-FlowRouter.route('/bofumx', {
+//工程资金拨付明细
+FlowRouter.route('/gongchengzjbfmx', {
     action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofumx"});
+        BlazeLayout.render('mainLayout', {content: 'gongchengzjbfmx'});
     }
 });
-//项目资金拨付汇总
-FlowRouter.route('/bofuhz', {
+//工程资金拨付汇总
+FlowRouter.route('/gongchengzjbfhz', {
     action: function() {
-        BlazeLayout.render("mainLayout", {content: "bofuhz"});
+        BlazeLayout.render('mainLayout', {content: 'gongchengzjbfhz'});
     }
 });
 /*系统管理模块*/
@@ -37,19 +37,20 @@ FlowRouter.route('/bofuhz', {
 /*通用功能模块*/
 var test = FlowRouter.route('/denglu', {
     action: function() {
-        BlazeLayout.render("blankLayout", {content: "denglu"});
+        BlazeLayout.render('blankLayout', {content: 'denglu'});
     }
 });
 /*404页面*/
 FlowRouter.notFound = {
     action: function() {
-        BlazeLayout.render("blankLayout", {content: "error404"});
+        BlazeLayout.render('blankLayout', {content: 'error404'});
     }
 };
 /*全局触发器*/
 FlowRouter.triggers.enter([function() {
-    if(Session.get("user") === undefined){
+    console.log('全局触发器');
+    if(Session.get('user') === undefined){
         FlowRouter.go('/denglu');
     }
-}], {except: ["denglu"]});
+}], {except: ['denglu']});
 
