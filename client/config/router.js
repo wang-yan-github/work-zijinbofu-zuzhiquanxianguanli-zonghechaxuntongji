@@ -33,6 +33,7 @@ FlowRouter.route('/bofuhz', {
 });
 /*系统管理模块*/
 
+
 /*通用功能模块*/
 var test = FlowRouter.route('/denglu', {
     action: function() {
