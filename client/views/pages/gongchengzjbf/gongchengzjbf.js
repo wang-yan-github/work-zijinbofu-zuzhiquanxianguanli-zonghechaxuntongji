@@ -1,6 +1,11 @@
-
 Template.gongchengzjbf.onCreated(function () {
-
+    this.zijinbflcxx = new ReactiveVar(0);
+    this.yuanshi_zijinbflcxx = new ReactiveVar(0);
+    Tracker.autorun(function () {
+        Meteor.subscribe('zijinbofu_gongdanxx');
+        Template.instance().yuanshi_zijinbflcxx.set(tb_gc_zijinbflcxx.find({}));
+        Template.instance().zijinbflcxx.set(Template.instance().yuanshi_zijinbflcxx.get());
+    });
 });
 Template.gongchengzjbf.onRendered(function () {
     $(function () { $("[data-toggle='tooltip']").tooltip({html : true });});
@@ -117,6 +122,116 @@ Template.gongchengzjbf.onRendered(function () {
         };
         toastr.success('您有一条新的工单','点击查看详情！');
     });
+});
+Template.gongchengzjbf.helpers({
+    data_gongdanlb:function () {
+        return Template.instance().zijinbflcxx.get();
+    }
+});
+Template.gongchengzjbf.events({
+    /*查看未完成工单点击事件*/
+    'click #chakanwwcgd':function (event) {
+        Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+            return obj.dangqiangdzt == '正常' && obj.dangqianclzt != '完成';
+        }));
+    },
+    /*查看已完成工单点击事件*/
+    'click #chakanywcgd':function (event) {
+        Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+            return obj.dangqiangdzt == '正常' && obj.dangqianclzt == '完成';
+        }));
+    },
+    /*查看作废工单点击事件*/
+    'click #chakanzfgd':function (event) {
+        Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+            return obj.dangqiangdzt == '作废';
+        }));
+    },
+    /*查看全部工单点击事件*/
+    'click #chakanqbgd':function (event) {
+        Template.instance().zijinbflcxx.set(Template.instance().yuanshi_zijinbflcxx.get());
+    },
+    /*查看未处理工单点击事件*/
+    'click #chakanwclgd':function (event) {
+        Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+            return obj.dangqiangdzt == '正常' && obj.dangqianclzt == '签批';
+        }));
+    },
+    /*选择搜索类型为项目名称点击事件*/
+    'click #sousuoxx_xmmc':function (event) {
+        $('#sousuoxx').text('项目名称');
+        $('#sousuokuang').typeahead('destroy');
+        $('#sousuokuang').typeahead({
+            source: Template.instance().yuanshi_zijinbflcxx.get().fetch(),
+            displayText:function (item) {
+                return item.xiangmumc;
+            }
+        });
+    },
+    /*选择搜索类型为收款单位点击事件*/
+    'click #sousuoxx_skdw':function (event) {
+        $('#sousuoxx').text('收款单位');
+        $('#sousuokuang').typeahead('destroy');
+        $('#sousuokuang').typeahead({
+            source: Template.instance().yuanshi_zijinbflcxx.get().fetch(),
+            displayText:function (item) {
+                return item.shoukuandw;
+            }
+        });
+    },
+    /*选择搜索类型为服务类型点击事件*/
+    'click #sousuoxx_fwlx':function (event) {
+        $('#sousuoxx').text('服务类型');
+        $('#sousuokuang').typeahead('destroy');
+        $('#sousuokuang').typeahead({
+            source: Template.instance().yuanshi_zijinbflcxx.get().fetch(),
+            displayText:function (item) {
+                return item.fuwulxmc;
+            }
+        });
+    },
+    /*选择搜索类型为模糊匹配点击事件*/
+    'click #sousuoxx_mhpp':function (event) {
+        $('#sousuoxx').text('模糊匹配');
+        $('#sousuokuang').typeahead('destroy');
+        $('#sousuokuang').typeahead({
+            //TODO:模糊匹配
+            source: Template.instance().yuanshi_zijinbflcxx.get().fetch(),
+            displayText:function (item) {
+                return item.xiangmumc;
+            }
+        });
+    },
+    /*搜索点击事件*/
+    'click #sousuo':function (event) {
+        if($('#sousuoxx').text() === '请选择搜索类型'){
+            alert('请选择搜索类型');
+        }else{
+            var sousuokuang = $('#sousuokuang').val();
+            switch ($('#sousuoxx').text()){
+                case '项目名称':
+                    Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+                        return obj.xiangmumc === sousuokuang;
+                    }));
+                    break;
+                case '收款单位':
+                    Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+                        return obj.shoukuandw === sousuokuang;
+                    }));
+                    break;
+                case '服务类型':
+                    Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+                        return obj.fuwulxmc === sousuokuang;
+                    }));
+                    break;
+                case '模糊匹配':
+                    Template.instance().zijinbflcxx.set(_.filter(Template.instance().yuanshi_zijinbflcxx.get().fetch(),function (obj) {
+                        return obj.xiangmumc === sousuokuang;
+                    }));
+                    break;
+            }
+        }
+    }
 });
 Template.gongchengzjbf.onDestroyed(function () {
 

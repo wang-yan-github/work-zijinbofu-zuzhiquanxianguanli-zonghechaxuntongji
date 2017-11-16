@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-autopublish@1.0.7
 less@2.7.11
 fortawesome:fontawesome
 jquery@1.11.10
@@ -32,3 +31,4 @@ zimme:active-route
 dynamic-import
 reactive-var
 u2622:persistent-session
+ostrio:templatehelpers
