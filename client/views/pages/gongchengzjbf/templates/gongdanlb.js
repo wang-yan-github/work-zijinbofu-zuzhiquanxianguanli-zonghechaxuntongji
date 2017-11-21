@@ -5,7 +5,7 @@ Template.gongdanlb.events({
     /*查看功能点击事件*/
     'click #chakanzjbfspb':function (event) {
         //console.log(tb_gc_zijinbflcxx.find({shenpidbh:this.data_gongdan.shenpidbh}).fetch()[0]);
-        Template.instance().zijinbfspb.set(tb_gc_zijinbflcxx.find({shenpidbh:this.data_gongdan.shenpidbh}).fetch()[0]);
+        Template.instance().zijinbfspb.set(tb_gc_zijinbflcxx.find({shenpidbh:this.shuju_gongdan.shenpidbh}).fetch()[0]);
     }
 });
 Template.gongdanlb.helpers({

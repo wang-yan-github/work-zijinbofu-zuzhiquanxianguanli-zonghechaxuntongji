@@ -15,4 +15,20 @@ Meteor.startup(function () {
             'dangqianclzt':true,
         }}*/);
     });
+    Meteor.publish('zijinbofu_xiangmuk', function () {
+        return tb_gc_xiangmuk.find({}/*,{fields:{
+            'shenpidbh':true,
+            'shoukuandw':true,
+            'fuwulxbh':true,
+            'fuwulxmc':true,
+            'xiangmubh':true,
+            'xiangmumc':true,
+            'gongchengxz':true,
+            'hetongje':true,
+            'hetongqdj':true,
+            'zhishangqljbfzj':true,
+            'dangqiangdzt':true,
+            'dangqianclzt':true,
+        }}*/);
+    });
 });

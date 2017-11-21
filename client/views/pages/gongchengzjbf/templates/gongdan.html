@@ -1,16 +1,16 @@
 <template name="gongdan">
-    <tr class="{{#if compare data_gongdan.dangqiangdzt '===' '作废' }}line-through{{/if}}">
+    <tr class="{{#if compare shuju_gongdan.dangqiangdzt '===' '作废' }}line-through{{/if}}">
         <td class="project-title" width="25%">
             <a href="#" class="vote-title" style="font-weight: inherit;margin-left: 0;font-size: 16px;">
-                {{data_gongdan.xiangmumc}}
+                {{shuju_gongdan.xiangmumc}}
             </a>
             <div class="vote-info" style="margin-left: 0">
-                <i class="fa fa-comments-o"></i> <a href="#">{{data_gongdan.shoukuandw}}</a>
-                <i class="fa fa-clock-o"></i> <a href="#">{{data_gongdan.fuwulxmc}}</a>
+                <i class="fa fa-comments-o"></i> <a href="#">{{shuju_gongdan.shoukuandw}}</a>
+                <i class="fa fa-clock-o"></i> <a href="#">{{shuju_gongdan.fuwulxmc}}</a>
             </div>
         </td>
         <td class="project-completion" width="25%">
-        {{#if compare data_gongdan.dangqianclzt '===' '填报' }}
+        {{#if compare shuju_gongdan.dangqianclzt '===' '填报' }}
             <div class="horizontal-timeline">
                 <div class="row">
                     <div class="col-xs-3">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if compare data_gongdan.dangqianclzt '===' '初审' }}
+        {{#if compare shuju_gongdan.dangqianclzt '===' '初审' }}
             <div class="horizontal-timeline">
                 <div class="row">
                     <div class="col-xs-3">
@@ -86,7 +86,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if compare data_gongdan.dangqianclzt '===' '签批' }}
+        {{#if compare shuju_gongdan.dangqianclzt '===' '签批' }}
             <div class="horizontal-timeline">
                 <div class="row">
                     <div class="col-xs-3">
@@ -124,7 +124,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if compare data_gongdan.dangqianclzt '===' '拨付' }}
+        {{#if compare shuju_gongdan.dangqianclzt '===' '拨付' }}
             <div class="horizontal-timeline">
                 <div class="row">
                     <div class="col-xs-3">
@@ -162,7 +162,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if compare data_gongdan.dangqianclzt '===' '完成' }}
+        {{#if compare shuju_gongdan.dangqianclzt '===' '完成' }}
                 <div class="horizontal-timeline">
                     <div class="row">
                         <div class="col-xs-3">
@@ -203,18 +203,18 @@
         </td>
         <td class="project-completion" width="30%">
             <span>工程资金拨付进度:</span>
-            <div class="stat-percent">{{math_except_percent data_gongdan.zhishangqljbfzj data_gongdan.hetongje}}%</div>
+            <div class="stat-percent">{{math_except_percent shuju_gongdan.zhishangqljbfzj shuju_gongdan.hetongje}}%</div>
             <div class="progress progress-mini">
-                <div style="width: {{math_except_percent data_gongdan.zhishangqljbfzj data_gongdan.hetongje}}%" class="progress-bar"></div>
+                <div style="width: {{math_except_percent shuju_gongdan.zhishangqljbfzj shuju_gongdan.hetongje}}%" class="progress-bar"></div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="font-bold">合同金额</div>
-                    {{data_gongdan.hetongje}}万元
+                    {{shuju_gongdan.hetongje}}万元
                 </div>
                 <div class="col-sm-6 text-right">
                     <div class="font-bold">至上期累计拨付资金</div>
-                    {{data_gongdan.zhishangqljbfzj}}万元
+                    {{shuju_gongdan.zhishangqljbfzj}}万元
                 </div>
             </div>
         </td>

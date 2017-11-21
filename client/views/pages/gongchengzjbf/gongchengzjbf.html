@@ -1,14 +1,13 @@
 <template name="gongchengzjbf">
 
     {{> pageHeading title='工程资金拨付'}}
-
     <div class="wrapper wrapper-content">
         <div class="row">
             <div class="col-lg-12">
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
                         <li class="active"><button class="btn btn-outline btn-primary dim" data-toggle="tab" href="#weiwanjiegd" id="chakanqbgd"><i class="fa fa-money"></i> 全部工单</button></li>
-                        <li class="pull-right"><button class="btn btn-primary dim" data-toggle="modal" data-target="#xinjianzjbfspb"><i class="fa fa-money"></i> 新建资金拨付审批表</button></li>
+                        <li class="pull-right"><button class="btn btn-primary dim" data-toggle="modal" data-target="#xinjianzjbfspb" id="xinzenggczjbfspb"><i class="fa fa-money"></i> 新建资金拨付审批表</button></li>
                     </ul>
                     <div class="modal inmodal fade" id="xinjianzjbfspb" tabindex="-1" role="dialog"  aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -25,10 +24,10 @@
                                             <div class="text-center m-t-md">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <button class="p-xl btn btn-default">施工类资金拨付审批单</button>
+                                                        <button class="btn btn-default p-xl">施工类资金拨付审批单</button>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <button class="p-xl btn btn-default">其他类资金拨付审批单</button>
+                                                        <button class="btn btn-default p-xl">其他类资金拨付审批单</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -38,43 +37,21 @@
                                         <div class="step-content">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <select data-placeholder="请选择工程年度..." class="chosen-select">
-                                                        <option value="">请选择工程年度..</option>
-                                                        <option value="United States">17年度工程</option>
-                                                        <option value="United Kingdom">16年度工程</option>
-                                                        <option value="Afghanistan">15年度工程</option>
+                                                    <select data-placeholder="请选择工程年度..." id="xiangmundlb" class="select-chosen">
+                                                        <option></option>
+                                                        {{#each shuju_xiangmund}}
+                                                            <option value="{{this}}">{{this}}年度工程</option>
+                                                        {{/each}}
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select data-placeholder="请选择工程名称..." class="chosen-select">
-                                                        <option value="">请选择工程名称...</option>
-                                                        <option value="United States">三峡大坝工程</option>
-                                                        <option value="United Kingdom">南三环公路工程</option>
-                                                        <option value="Afghanistan">北三环公路工程</option>
-                                                        <option value="Aland Islands">苏堤路改造工程</option>
-                                                        <option value="Albania">泉山区道路改造工程</option>
+                                                    <select data-placeholder="请选择工程名称..." id="xiangmumclb" class="select-chosen">
+                                                        <option></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select data-placeholder="请选择公司/标段名称..." class="chosen-select">
-                                                        <option value="">请选择公司/标段名称...</option>
-                                                        <option value="United States">标段1-ABC公司</option>
-                                                        <option value="United Kingdom">标段2-徐工集团</option>
-                                                        <option value="Afghanistan">标段3-徐工集团</option>
-                                                        <option value="Aland Islands">标段4-南方重器</option>
-                                                        <option value="Albania">标段5-格力公司</option>
-                                                        <option value="Algeria">标段6-阿里巴巴</option>
-                                                        <option value="American Samoa">标段7-腾讯集团</option>
-                                                        <option value="Andorra">标段8-宇宙集团</option>
-                                                        <option value="Angola">标段9-百度公司</option>
-                                                        <option value="Anguilla">标段10-搜狐娱乐</option>
-                                                        <option value="Antarctica">标段11-搜狗公司</option>
-                                                        <option value="Antigua and Barbuda">标段12-你我娱乐</option>
-                                                        <option value="Argentina">标段13-斗鱼直播</option>
-                                                        <option value="Armenia">标段14-捞月狗集团</option>
-                                                        <option value="Aruba">标段15-熊猫直播</option>
-                                                        <option value="Australia">标段16-天涯互动</option>
-                                                        <option value="Austria">标段17-里仁公司</option>
+                                                    <select data-placeholder="请选择收款单位/标段名称..." id="shoukuandwmclb" class="select-chosen">
+                                                        <option></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -82,7 +59,7 @@
                                             <div class="row" style="min-height: 300px">
                                                 <div class="col-md-12">
                                                     <table class="myTable" border="1px" width="100%">
-                                                        <caption>单位：万元</caption>
+                                                        <caption style="text-align: right">单位：万元</caption>
                                                         <thead>
                                                         <tr>
                                                             <th>日期</th>
@@ -163,7 +140,7 @@
                                                                 <td colspan="3">收款单位：</td>
                                                                 <td colspan="3">阿里巴巴有限公司</td>
                                                                 <td colspan="2">服务类型：</td>
-                                                                <td colspan="1">施工类</td>
+                                                                <td colspan="1">{{shuju_test}}</td>
                                                                 <td colspan="2">单位：</td>
                                                                 <td colspan="1">万元</td>
                                                             </tr>
@@ -455,7 +432,7 @@
                                                 </div>
                                             </div>-->
                                         </div>
-                                        {{> gongdanlb data_gongdanlb = data_gongdanlb}}
+                                        {{> gongdanlb shuju_gongdanlb = shuju_gongdanlb}}
                                     </div>
                                 </div>
                             </div>
