@@ -220,6 +220,22 @@
         </td>
         <td class="project-actions" width="20%">
             <button id="chakanzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbck"><i class="fa fa-folder"></i> 查看 </button>
+            {{#if compare shuju_gongdan.dangqiangdzt '===' '作废'}}
+                <button id="chakanzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbck"><i class="fa fa-folder"></i> 新建 </button>
+            {{else}}
+                {{#if compare shuju_gongdan.dangqianclzt '===' '填报'}}
+                    <button id="bianjizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbj"><i class="fa fa-folder"></i> 编辑 </button>
+                {{/if}}
+                {{#if compare shuju_gongdan.dangqianclzt '===' '初审'}}
+                    <button id="chushenzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbcs"><i class="fa fa-folder"></i> 初审 </button>
+                {{/if}}
+                {{#if compare shuju_gongdan.dangqianclzt '===' '签批'}}
+                    <button id="qianpizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbscsmj"><i class="fa fa-folder"></i> 签批 </button>
+                {{/if}}
+                {{#if compare shuju_gongdan.dangqianclzt '===' '拨付'}}
+                    <button id="bofuzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbf"><i class="fa fa-folder"></i> 拨付 </button>
+                {{/if}}
+            {{/if}}
         </td>
     </tr>
 </template>
