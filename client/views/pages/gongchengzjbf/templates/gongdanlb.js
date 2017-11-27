@@ -13,8 +13,5 @@ Template.gongdanlb.helpers({
     zijinbfspb:function () {
         return Template.instance().zijinbfspb.get();
     },
-    /*获取处理意见方法*/
-    huoquclyj(n){
-        return _.findWhere(Template.instance().zijinbfspb.get().shenpixx,{buzhoubh:n});
-    }
+  
 });

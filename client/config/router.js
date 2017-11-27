@@ -32,7 +32,18 @@ FlowRouter.route('/gongchengzjbfhz', {
     }
 });
 /*系统管理模块*/
-
+//日志管理
+FlowRouter.route('/rizhigl', {
+    action: function() {
+        BlazeLayout.render('mainLayout', {content: 'rizhigl'});
+    }
+});
+//码表管理
+FlowRouter.route('/mabiaogl', {
+    action: function() {
+        BlazeLayout.render('mainLayout', {content: 'mabiaogl'});
+    }
+});
 
 /*通用功能模块*/
 FlowRouter.route('/denglu', {
@@ -48,9 +59,10 @@ FlowRouter.notFound = {
     }
 };
 /*全局触发器*/
+/*
 FlowRouter.triggers.enter([function() {
     if(Session.get('user') === undefined){
         FlowRouter.go('/denglu');
     }
 }], {except: ['denglu']});
-
+*/
