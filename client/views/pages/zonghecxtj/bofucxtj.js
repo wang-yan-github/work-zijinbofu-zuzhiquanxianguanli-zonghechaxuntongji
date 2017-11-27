@@ -1,65 +1,49 @@
-/**
- * Created by Administrator on 2017/11/13.
- */
-Template.bofucxtj.rendered = function() {
+Template.gongchengzjcxtj.onCreated(function () {
+    // 码表信息
+    this.mabiaoxx = new ReactiveVar(0);
+    // 原始-码表信息
+    this.yuanshi_mabiaoxx = new ReactiveVar(0);
+    // 订阅-资金拨付-码表信息
+    this.subscribe('zijinbofu_mabiaoxx');
 
-    // 初始化 checks
-    $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green',
-    });
+    Tracker.autorun(function () {
+        Template.instance().yuanshi_mabiaoxx.set(ts_gc_mabiaoxx.find())
+        Template.instance().mabiaoxx.set(Template.instance().yuanshi_mabiaoxx.get());
+    })
+})
 
-}
-
-Template.bofucxtj.helpers({
-
-    // 年度
+Template.gongchengzjcxtj.helpers({
     niandu:function () {
-        // 返回静态模拟数据
-        return [
-            {year: 17},
-            {year: 18},
-            {year: 19},
-            {year: 20},
-            {year: 21},
-            {year: 22},
-            {year: 23},
-            {year: 24},
-            {year: 25},
-            {year: 26},
-            {year: 27}
-        ]
-    }, // 项目状态
+        return mabiaoffmz('年度');
+    },
     xiangmuzt:function () {
-        // 返回静态模拟数据
-        return [
-            {_id:0,name: "全部"},
-            {_id:1,name: "未开工"},
-            {_id:2,name: "在建"},
-            {_id:3,name: "完工"}
-        ]
-    }, // 项目分类
+        return mabiaoffmz('项目状态');
+    },
     xiangmufl:function () {
-        // 返回静态模拟数据
-        return [
-            {_id:0,name: "全部"},
-            {_id:1,name: "道路"},
-            {_id:2,name: "桥梁"},
-            {_id:3,name: "安保设施"},
-            {_id:4,name: "养护工程"}
-        ]
-    }, // 服务类型
+        return mabiaoffmz('项目分类');
+    },
     fuwulx:function () {
-        // 返回静态模拟数据
-        return [
-            {_id:0,name: "全部"},
-            {_id:1,name: "设计"},
-            {_id:2,name: "施工"},
-            {_id:3,name: "监理"},
-            {_id:4,name: "检测"},
-            {_id:5,name: "其他咨询类服务"},
-            {_id:6,name: "甲供材料"}
-        ]
+        return mabiaoffmz('服务类型');
     }
 
 });
+
+// 码表返回码值
+function mabiaoffmz(mabiaomc) {
+    // 码表数据源
+    var mabiaoxx = Template.instance().mabiaoxx.get().fetch();
+    // 返回-码表信息码值
+    var fanhui_mabiaoxxmz = new Array();
+
+    for(var i in mabiaoxx){
+        if(mabiaoxx[i].mabiaomc == mabiaomc){
+            for(var j in mabiaoxx[i].mabiaoxx){
+                var mabiaoxxobj = new Object();
+
+                mabiaoxxobj.mazhi = mabiaoxx[i].mabiaoxx[j].mazhi;
+                fanhui_mabiaoxxmz.push(mabiaoxxobj);
+            }
+        }
+    }
+    return fanhui_mabiaoxxmz;
+}

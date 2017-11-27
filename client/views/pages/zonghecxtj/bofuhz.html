@@ -1,4 +1,4 @@
-<template name="bofuhz">
+<template name="gongchengzjbfhz">
 
     {{> pageHeading title='工程资金拨付汇总'}}
 
@@ -8,33 +8,29 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="cxtj_xmfc">项目名称</label>
-                        <input type="text" id="cxtj_xmfc" name="cxtj_xmfc" value="" placeholder="" class="form-control">
+                        <label class="control-label" for="xmmc">项目名称</label>
+                        <input type="text" id="xmmc" name="xmmc" value="" placeholder="" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="cxtj_xmfl">项目分类</label>
-                        <select name="cxtj_xmfl" id="cxtj_xmfl" class="form-control">
-                            <option value="0">全部</option>
-                            <option value="1">分道路</option>
-                            <option value="2">桥梁</option>
-                            <option value="3">安保设施</option>
-                            <option value="4">养护工程</option>
+                        <label class="control-label" for="xmfl">项目分类</label>
+                        <select name="xmfl" id="xmfl" class="form-control">
+                            <option value="">全部</option>
+                            {{#each xiangmufl}}
+                            <option value="{{mazhi}}">{{mazhi}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="cxtj_fwlx">服务类型</label>
-                        <select name="cxtj_fwlx" id="cxtj_fwlx" class="form-control">
-                            <option value="0">全部</option>
-                            <option value="1">设计</option>
-                            <option value="2">施工</option>
-                            <option value="3">监理</option>
-                            <option value="4">检测</option>
-                            <option value="5">其他咨询类服务</option>
-                            <option value="6">甲供材料</option>
+                        <label class="control-label" for="fwlx">服务类型</label>
+                        <select name="fwlx" id="fwlx" class="form-control">
+                            <option value="">全部</option>
+                            {{#each fuwulx}}
+                            <option value="{{mazhi}}">{{mazhi}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
@@ -42,20 +38,34 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="cxtj_ksnd">开始年度</label>
-                        <select name="cxtj_ksnd" id="cxtj_ksnd" class="form-control">
+                        <label class="control-label" for="kaishind">开始年度</label>
+                        <select name="cxtj_ksnd" id="kaishind" class="form-control">
+                            <option value="">全部</option>
+                            {{#each kaishind}}
+                            <option value="{{mazhi}}">{{mazhi}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <label class="control-label" for="cxtj_fwlx">结束年度</label>
-                    <select name="cxtj_jsnd" id="cxtj_jsnd" class="form-control">
+                    <label class="control-label" for="jieshund">结束年度</label>
+                    <select name="jieshund" id="jieshund" class="form-control">
+                        <option value="">全部</option>
+                        {{#each jieshund}}
+                        <option value="{{mazhi}}">{{mazhi}}</option>
+                        {{/each}}
                     </select>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="control-label" for="cxtj_fwlx">操作</label>
-                        <button type="button" class=" btn btn-block btn-primary" id="cxtj_cx">查询</button>
+                        <label class="control-label" for="bofuhzxxss">操作</label>
+                        <button type="button" class=" btn btn-block btn-primary" id="bofuhzxxss">查询</button>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label" for="chongzhian">操作</label>
+                        <button type="button" class=" btn btn-block btn-primary" id="chongzhian">重置</button>
                     </div>
                 </div>
             </div>
@@ -70,7 +80,8 @@
                     <div class="ibox-content">
 
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover dataTables-example">
+
+                            <table class="table table-striped table-bordered table-hover dataTables-example" >
                                 <thead>
                                 <tr>
                                     <th>年度</th>
@@ -78,105 +89,27 @@
                                     <th>项目分类</th>
                                     <th>单位名称</th>
                                     <th>服务类型</th>
-                                    <th title="万元">合同金额</th>
-                                    <th title="万元">质保金</th>
-                                    <th title="万元">已累计拨付金额</th>
-                                    <th title="万元">未付金额</th>
+                                    <th>标段名称</th>
+                                    <th title="万元">合同金额(万元)</th>
+                                    <th title="万元">质保金(万元)</th>
+                                    <th title="万元">支付金额(万元)</th>
+                                    <th title="万元">已累计拨付金额(万元)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td title="17">17</td>
-                                    <td title="资金拨付系统">资金拨付系统</td>
-                                    <td title="养护工程">养护工程</td>
-                                    <td title="江苏里仁有限公司">江苏里仁有限公司</td>
-                                    <td title="甲供材料">甲供材料</td>
-                                    <td title="100.000000">100.000000</td>
-                                    <td title="1.000000">1.000000</td>
-                                    <td title="10.000000">10.000000</td>
-                                    <td title="90.000000">90.000000</td>
-                                </tr>
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>汇总</th>
+                                    <th colspan="2" style="text-align:center">汇总</th>
+                                    <th colspan="4"></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th>700.000000</th>
-                                    <th>7.000000</th>
-                                    <th>70.000000</th>
-                                    <th>56.000000</th>
                                 </tr>
                                 </tfoot>
                             </table>
+
                         </div>
 
                     </div>
