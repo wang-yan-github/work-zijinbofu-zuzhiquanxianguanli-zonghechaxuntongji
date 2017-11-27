@@ -1,5 +1,65 @@
-var gongchengzjbfspbxz = {
-
+var gongdanxzbyxx = {};
+var gongdanxz = {
+    "shenpidbh" : "",
+    "zhihuibbh" : "",
+    "zhihuibmc" : "",
+    "shoukuandw" : "",
+    "fuwulxbh" : "",
+    "fuwulxmc" : "",
+    "xiangmubh" : "",
+    "xiangmumc" : "",
+    "gongchengxz" : "",
+    "gongchengzt" : "",
+    "biaoduanmc" : "",
+    "xiangmunrgm" : "",
+    "bokuanyj" : "",
+    "hetongje" : "",
+    "zandingje" : "",
+    "hetongqdj" : "",
+    "anquanjf" : "",
+    "jiliangzfsdzj" : "",
+    "zhishangqljbfzj" : "",
+    "weifuzj" : "",
+    "zhibaojkc" : "",
+    "yingfuzj" : "",
+    "benqisqje" : "",
+    "benqihdbfje" : "",
+    "benqiljbfzj" : "",
+    "jihuafwfy" : "",
+    "shenqingly" : "",
+    "dangqiangdzt" : "",
+    "dangqianclzt" : "",
+    "xiayibclzt" : "",
+    "shenpixx" : [
+        {
+            "buzhoubh" : "1",
+            "buzhoumc" : "填报",
+            "chuliyj" : "",
+            "xingming" : "",
+            "riqi" : ""
+        },
+        {
+            "buzhoubh" : "2",
+            "buzhoumc" : "初审",
+            "chuliyj" : "",
+            "xingming" : "",
+            "riqi" : ""
+        },
+        {
+            "buzhoubh" : "3",
+            "buzhoumc" : "签批",
+            "chuliyj" : "",
+            "xingming" : "",
+            "riqi" : ""
+        },
+        {
+            "buzhoubh" : "4",
+            "buzhoumc" : "拨付",
+            "chuliyj" : "",
+            "xingming" : "",
+            "riqi" : ""
+        }
+    ]
 };
 Template.gongchengzjbf.onCreated(function () {
     //订阅：工程资金拨付审批表
@@ -29,6 +89,75 @@ Template.gongchengzjbf.onRendered(function () {
             Tracker.afterFlush(function () {
                 $(function () { $("[data-toggle='tooltip']").tooltip({html : true });});
                 $("#wizard").steps({
+                    /*事件*/
+                    onStepChanging: function (event, currentIndex, newIndex) {
+                        //TODO:验证输入
+                        return true;
+                    },
+                    onStepChanged: function (event, currentIndex) {
+                        switch(currentIndex){
+                            case 3:
+                                //指挥部名称
+                                $('[name="yulan_zhihuibumc"]').text(gongdanxz.zhihuibmc);
+                                //审批单编号
+                                $('[name="yulan_shenpidbh"]').text(gongdanxz.shenpidbh);
+                                //收款单位
+                                $('[name="yulan_shoukuandw"]').text(gongdanxz.shoukuandw);
+                                //服务类型
+                                $('[name="yulan_fuwulxmc"]').text(gongdanxz.fuwulxmc);
+                                //项目名称
+                                $('[name="yulan_xiangmumc"]').text(gongdanxz.xiangmumc);
+                                //工程性质
+                                $('[name="yulan_xiangmuxz"]').text(gongdanxz.gongchengxz);
+                                //标段名称
+                                $('[name="yulan_biaoduanmc"]').text(gongdanxz.biaoduanmc);
+                                //项目内容规模
+                                $('[name="yulan_xiangmunrgm"]').text(gongdanxz.xiangmunrgm);
+                                //拨款依据
+                                $('[name="yulan_bokuanyj"]').text(gongdanxz.bokuanyj);
+                                //工程状态
+                                $('[name="yulan_gongchengzt"]').text(gongdanxz.gongchengzt);
+                                //暂定金额
+                                $('[name="yulan_zandingje"]').text(gongdanxz.zandingje);
+                                //合同金额
+                                $('[name="yulan_hetongje"]').text(gongdanxz.hetongje);
+                                //合同清单价
+                                $('[name="yulan_hetongqdj"]').text(gongdanxz.hetongqdj);
+                                //安全经费
+                                $('[name="yulan_anquanjf"]').text(gongdanxz.anquanjf);
+                                //计量支付审定资金
+                                $('[name="yulan_jiliangzfsdzj"]').text(gongdanxz.jiliangzfsdzj);
+                                //至上期累计拨付资金
+                                $('[name="yulan_zhishangqljbfzj"]').text(gongdanxz.zhishangqljbfzj);
+                                //未付资金
+                                $('[name="yulan_weifuzj"]').text(gongdanxz.weifuzj);
+                                //质保金扣除
+                                $('[name="yulan_zhbaojkc"]').text(gongdanxz.zhibaojkc);
+                                //应付资金
+                                $('[name="yulan_yingfuzj"]').text(gongdanxz.yingfuzj);
+                                //本期申请资金
+                                $('[name="yulan_benqisqzj"]').text(gongdanxz.benqisqje);
+                                //本期核定拨付资金
+                                $('[name="yulan_benqihdbfzj"]').text(gongdanxz.benqihdbfje);
+                                //本期累计拨付资金
+                                $('[name="yulan_benqiljbfzj"]').text(gongdanxz.benqiljbfzj);
+                                //申请理由
+                                $('[name="yulan_shenqingly"]').text(gongdanxz.shenqingly);
+
+                                /*获取处理意见*/
+                                //填报处理意见
+                                gongdanxz.shenpixx[0].chuliyj = '通过';
+                                $('[name="yulan_tianbaoyj"]').text(gongdanxz.shenpixx[0].chuliyj);
+                                //填报人
+                                gongdanxz.shenpixx[0].xingming = Session.get('user').username;
+                                $('[name="yulan_tianbaor"]').text(gongdanxz.shenpixx[0].xingming);
+                                //填报日期
+                                var date = new Date();
+                                gongdanxz.shenpixx[0].riqi = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                                $('[name="yulan_tianbaorq"]').text(gongdanxz.shenpixx[0].riqi);
+                                break;
+                        }
+                    },
                     onFinished: function (event, currentIndex)
                     {
                         $('#xinjianzjbfspb').modal('hide');
@@ -43,21 +172,29 @@ Template.gongchengzjbf.onRendered(function () {
                                 closeOnConfirm: false,
                                 closeOnCancel: false },
                             function (isConfirm) {
+                                gongdanxz.dangqiangdzt = '正常';
                                 if (isConfirm) {
+                                    gongdanxz.dangqianclzt = '初审';
                                     swal("提交!", "您的表单提交成功!", "success");
                                 } else {
+                                    gongdanxz.dangqianclzt = '填报';
                                     swal("保存!", "您的表单保存成功!", "success");
                                 }
+                                var result = tb_gc_zijinbflcxx.insert(gongdanxz);
                             });
+                    },
+                    /*标签*/
+                    labels: {
+                        cancel: "取消",
+                        current: "当前步骤:",
+                        pagination: "分页",
+                        finish: "完成",
+                        next: "下一步",
+                        previous: "上一步",
+                        loading: "加载中..."
                     }
                 });
                 $('.select-chosen').chosen({width: "100%",no_results_text: "没有结果"});
-                Dropzone.options.dropzoneForm = {
-                    paramName: "file", // The name that will be used to transfer the file
-                    maxFilesize: 16, // MB
-                    dictDefaultMessage: "<strong>拖拽文件到此处或者点击此处上传。 </strong></br> 可上传文件大小不高于16M,可选文件格式为常用文件格式。",
-                    addRemoveLinks:true
-                };
                 $('#chuxianxgd').click(function (){
                     // Display a success toast, with a title
                     toastr.options = {
@@ -260,23 +397,23 @@ Template.gongchengzjbf.events({
     /*新增工程资金拨付审批表*/
     //触发自动保存内容
     'click #xinzenggczjbfspb':function () {
-        Session.set('gongchengzjbfspbxz',gongchengzjbfspbxz);
+        Session.set('gongdanxz',gongdanxz);
     },
     //选择新增工程资金拨付审批表类型
     'click .p-xl':function (event) {
         if(event.target.innerText == '施工类资金拨付审批单'){
-            gongchengzjbfspbxz.gongchengxz = '施工类';
+            gongdanxzbyxx.gongchengxz = '施工类';
         }else if(event.target.innerText == '其他类资金拨付审批单'){
-            gongchengzjbfspbxz.gongchengxz = '其他类';
+            gongdanxzbyxx.gongchengxz = '其他类';
         }
-        Session.update('gongchengzjbfspbxz',gongchengzjbfspbxz);
+        //Session.update('gongdanxzbyxx',gongdanxzbyxx);
     },
     //选择项目年度
     'change #xiangmundlb':function (event) {
-        gongchengzjbfspbxz.xiangmund = event.target.value;
-        Session.update('gongchengzjbfspbxz',gongchengzjbfspbxz);
+        gongdanxzbyxx.xiangmund = event.target.value;
+        //Session.update('gongdanxzbyxx',gongdanxzbyxx);
         var xiangmumclb = _.pluck(_.filter(Template.instance().xiangmukxx.get().fetch(),function (obj) {
-            return obj.xiangmund == gongchengzjbfspbxz.xiangmund;
+            return obj.xiangmund == gongdanxzbyxx.xiangmund;
         }),'xiangmumc');
         $('#xiangmumclb').empty();
         $('#xiangmumclb').append('<option></option>');
@@ -287,16 +424,16 @@ Template.gongchengzjbf.events({
     },
     //选择项目名称
     'change #xiangmumclb':function (event) {
-        gongchengzjbfspbxz.xiangmumc = event.target.value;
-        Session.update('gongchengzjbfspbxz',gongchengzjbfspbxz);
+        gongdanxzbyxx.xiangmumc = event.target.value;
+        //Session.update('gongdanxzbyxx',gongdanxzbyxx);
         var shoukuandwlb;
-        if(gongchengzjbfspbxz.gongchengxz == '施工类'){
+        if(gongdanxzbyxx.gongchengxz == '施工类'){
             shoukuandwlb = _.pluck(_.filter(Template.instance().xiangmukxx.get().fetch(),function (obj) {
-                return obj.xiangmumc == gongchengzjbfspbxz.xiangmumc;
+                return obj.xiangmumc == gongdanxzbyxx.xiangmumc;
             })[0].biaoduanhtxx,'biaoduanmc');
-        }else if(gongchengzjbfspbxz.gongchengxz == '其他类'){
+        }else if(gongdanxzbyxx.gongchengxz == '其他类'){
             shoukuandwlb = _.pluck(_.filter(Template.instance().xiangmukxx.get().fetch(),function (obj) {
-                return obj.xiangmumc == gongchengzjbfspbxz.xiangmumc;
+                return obj.xiangmumc == gongdanxzbyxx.xiangmumc;
             })[0].xiangmuhtxx,'danweimc');
         }
         $('#shoukuandwmclb').empty();
@@ -308,21 +445,161 @@ Template.gongchengzjbf.events({
     },
     //选择收款单位
     'change #shoukuandwmclb':function (event) {
-        if(gongchengzjbfspbxz.gongchengxz == '施工类'){
+        if(gongdanxzbyxx.gongchengxz == '施工类'){
             //当前选择为施工类项目，标段名称赋值，获取收款单位
-            gongchengzjbfspbxz.biaoduanmc = event.target.value;
-            gongchengzjbfspbxz.shoukuandw = _.filter(_.filter(Template.instance().xiangmukxx.get().fetch(),function (obj) {
-                return obj.xiangmumc == gongchengzjbfspbxz.xiangmumc && obj.xiangmund == gongchengzjbfspbxz.xiangmund;
+            gongdanxzbyxx.biaoduanmc = event.target.value;
+            gongdanxzbyxx.shoukuandw = _.filter(_.filter(Template.instance().xiangmukxx.get().fetch(),function (obj) {
+                return obj.xiangmumc == gongdanxzbyxx.xiangmumc && obj.xiangmund == gongdanxzbyxx.xiangmund;
             })[0].biaoduanhtxx,function (obj) {
                 return obj.biaoduanmc = event.target.value;
             })[0].shoukuandw;
-        }else if(gongchengzjbfspbxz.gongchengxz == '其他类'){
+        }else if(gongdanxzbyxx.gongchengxz == '其他类'){
             //当前选择为其他类项目，收款单位赋值，标段名称为空
-            gongchengzjbfspbxz.shoukuandw = event.target.value;
-            gongchengzjbfspbxz.biaoduanmc = '';
+            gongdanxzbyxx.shoukuandw = event.target.value;
+            gongdanxzbyxx.biaoduanmc = '';
         }
-        Session.update('gongchengzjbfspbxz',gongchengzjbfspbxz);
-        //获取项目信息并添加至资金拨付审批表中
+
+        //获取项目信息
+        var xiangmuxx = _.findWhere(Template.instance().xiangmukxx.get().fetch(),{xiangmund:gongdanxzbyxx.xiangmund,xiangmumc:gongdanxzbyxx.xiangmumc});
+
+        /*将项目信息保存在session中，1、为了自动保存。2、为了展现在下一步上*/
+        //指挥部编号
+        gongdanxz.zhihuibbh = xiangmuxx.zhihuibbh;
+        //指挥部名称
+        gongdanxz.zhihuibmc = xiangmuxx.zhihuibmc;
+        //项目编号
+        gongdanxz.xiangmubh = xiangmuxx.xiangmubh;
+        //项目名称
+        gongdanxz.xiangmumc = xiangmuxx.xiangmumc;
+        //工程性质
+        gongdanxz.gongchengxz = xiangmuxx.gongchengxz;
+        //工程状态
+        gongdanxz.gongchengzt = xiangmuxx.gongchengzt;
+        //项目内容规模
+        gongdanxz.xiangmunrgm = xiangmuxx.xiangmujj;
+
+        /*获取项目信息并添加至资金拨付审批表中:
+            指挥部编号、指挥部名称、收款单位、服务类型编号、服务类型名称、
+            项目编号、项目名称、工程性质、项目内容规模、合同金额、暂定金额、计量支付审定资金、质保金扣除*/
+        //指挥部名称
+        $('[name="zhihuibmc"]').text(xiangmuxx.zhihuibmc);
+        //项目名称
+        $('[name="xiangmumc"]').text(xiangmuxx.xiangmumc);
+        //工程性质
+        $('[name="gongchengxz"]').text(xiangmuxx.gongchengxz);
+        //项目内容规模
+        $('[name="xiangmunrgm"]').text(xiangmuxx.xiangmujj);
+        //工程状态
+        $('[name="gongchengzt"]').text(xiangmuxx.gongchengzt);
+
+        //获取收款单位信息
+        var shoukuandwxx = {};
+        if(gongdanxzbyxx.gongchengxz == '施工类'){
+            //当前选择为施工类项目，标段名称赋值，获取收款单位
+            shoukuandwxx = _.findWhere(xiangmuxx.biaoduanhtxx,{biaoduanmc:gongdanxzbyxx.biaoduanmc});
+        }else if(gongdanxzbyxx.gongchengxz == '其他类'){
+            //当前选择为其他类项目，收款单位赋值，标段名称为空
+            shoukuandwxx = _.findWhere(xiangmuxx.xiangmuhtxx,{danweimc:gongdanxzbyxx.shoukuandw});
+        }
+
+        /*将收款单位信息保存在session中，1、为了自动保存。2、为了展现在下一步上*/
+        //收款单位
+        gongdanxz.shoukuandw = shoukuandwxx.danweimc;
+        //服务类型编号
+        gongdanxz.fuwulxbh = shoukuandwxx.fuwulxbh;
+        //服务类型名称
+        gongdanxz.fuwulxmc = shoukuandwxx.fuwulxmc;
+        //标段名称
+        gongdanxz.biaoduanmc = shoukuandwxx.biaoduanmc;
+        //合同金额
+        gongdanxz.hetongje = shoukuandwxx.hetongje;
+        //暂定金额
+        gongdanxz.zandingje = shoukuandwxx.zandingje;
+        //合同清单价
+        gongdanxz.hetongqdj = shoukuandwxx.hetongqdj;
+        //暂时计量支付审定资金
+        gongdanxz.jiliangzfsdzj = shoukuandwxx.jiliangzfsdzj;
+
+        //标段名称
+        $('[name="biaoduanmc"]').text(shoukuandwxx.biaoduanmc);
+        //收款单位
+        $('[name="shoukuandw"]').text(shoukuandwxx.danweimc);
+        //服务类型
+        $('[name="fuwulxmc"]').text(shoukuandwxx.fuwulxmc);
+        //暂定金额
+        $('[name="zandingje"]').text(shoukuandwxx.zandingje);
+        //合同金额
+        $('[name="hetongje"]').text(shoukuandwxx.hetongje);
+        //合同清单价
+        $('[name="hetongqdj"]').text(shoukuandwxx.hetongqdj);
+
+        /*将自动计算信息保存在session中，1、为了自动保存。2、为了展现在下一步上*/
+        //安全经费
+        gongdanxz.anquanjf = parseFloat(shoukuandwxx.hetongje)*0.05;
+
+        //以下为计算得出
+        //至上期累计拨付资金
+        $('[name="zhishangqljbfzj"]').text(function () {
+            return _.reduce(_.pluck(shoukuandwxx.zijinbfxx, 'zhifuje'), function(memo, num){ return memo + parseFloat(num); }, 0);
+        });
+        //安全经费
+        $('[name="anquanjf"]').text(function () {
+            return parseFloat(shoukuandwxx.hetongje)*0.05;
+        });
+        //至上期累计拨付资金
+        gongdanxz.zhishangqljbfzj = parseFloat($('[name="zhishangqljbfzj"]').text());
+
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
+    },
+    /*本期申请资金变更事件*/
+    'change [name="benqisqzj"]':function () {
+        gongdanxz.benqisqje = $('[name="benqisqzj"]').val();
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
+    },
+    /*计量支付审定资金变更事件*/
+    'change [name="jiliangzfsdzj"]':function () {
+        //未付资金=总计量支付审定资金-至上期累计拨付资金
+        var weifuzj = parseFloat($('[name="jiliangzfsdzj"]').val()) + parseFloat(gongdanxz.jiliangzfsdzj) - parseFloat($('[name="zhishangqljbfzj"]').text());
+        $('[name="weifuzj"]').text(function () {
+            return weifuzj;
+        });
+        //应付资金=本期计量支付审定资金-质保金扣除
+        var yingfuzj = parseFloat($('[name="jiliangzfsdzj"]').val())*0.95;
+        $('[name="yingfuzj"]').text(function () {
+            return yingfuzj;
+        });
+        //质保金扣除
+        $('[name="zhibaojkc"]').text(parseFloat($('[name="jiliangzfsdzj"]').val())*0.05);
+        //将应付资金、未付资金与计量支付审定资金加入本次新增工单中
+        gongdanxz.zhibaojkc = parseFloat($('[name="jiliangzfsdzj"]').val())*0.05;
+        gongdanxz.yingfuzj = yingfuzj;
+        gongdanxz.weifuzj = weifuzj;
+        gongdanxz.jiliangzfsdzj = $('[name="jiliangzfsdzj"]').val();
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
+    },
+    /*拨款依据变更事件*/
+    'change [name="bokuanyj"]':function () {
+        gongdanxz.bokuanyj = $('[name="bokuanyj"]').val();
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
+    },
+    /*本期核定拨付资金*/
+    'change [name="benqihdbfzj"]':function () {
+        gongdanxz.benqihdbfje = $('[name="benqihdbfzj"]').val();
+        //输出本期累计拨付资金
+        gongdanxz.benqiljbfzj = parseFloat($('[name="benqihdbfzj"]').val()) + parseFloat($('[name="zhishangqljbfzj"]').text());
+        $('[name="benqiljbfzj"]').text(gongdanxz.benqiljbfzj);
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
+    },
+    /*申请理由变更事件*/
+    'change [name="shenqingly"]':function () {
+        gongdanxz.shenqingly = $('[name="shenqingly"]').val();
+        //更新Session中的gongdanxz
+        Session.update('gongdanxz',gongdanxz);
     }
 });
 Template.gongchengzjbf.onDestroyed(function () {

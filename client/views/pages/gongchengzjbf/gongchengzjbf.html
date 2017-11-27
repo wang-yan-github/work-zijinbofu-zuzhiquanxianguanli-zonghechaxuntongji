@@ -6,7 +6,6 @@
             <div class="col-lg-12">
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
-                        <li class="active"><button class="btn btn-outline btn-primary dim" data-toggle="tab" href="#weiwanjiegd" id="chakanqbgd"><i class="fa fa-money"></i> 全部工单</button></li>
                         <li class="pull-right"><button class="btn btn-primary dim" data-toggle="modal" data-target="#xinjianzjbfspb" id="xinzenggczjbfspb"><i class="fa fa-money"></i> 新建资金拨付审批表</button></li>
                     </ul>
                     <div class="modal inmodal fade" id="xinjianzjbfspb" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -132,124 +131,105 @@
                                                             <tbody>
                                                             <tr>
                                                                 <td colspan="3">建设指挥部（管理办）：</td>
-                                                                <td colspan="3">邳州市交通局</td>
+                                                                <td colspan="3" name="zhihuibmc"></td>
                                                                 <td colspan="3">编号：</td>
-                                                                <td colspan="3">0101170010001</td>
+                                                                <td colspan="3" name="shenpidbh"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">收款单位：</td>
-                                                                <td colspan="3">阿里巴巴有限公司</td>
+                                                                <td colspan="3" name="shoukuandw"></td>
                                                                 <td colspan="2">服务类型：</td>
-                                                                <td colspan="1">{{shuju_test}}</td>
+                                                                <td colspan="1" name="fuwulxmc"></td>
                                                                 <td colspan="2">单位：</td>
                                                                 <td colspan="1">万元</td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="2">项目名称：</td>
-                                                                <td colspan="2">泉山区道路翻新工程</td>
+                                                                <td colspan="2" name="xiangmumc"></td>
                                                                 <td colspan="2">工程性质：</td>
-                                                                <td colspan="2">施工类工程</td>
+                                                                <td colspan="2" name="gongchengxz"></td>
                                                                 <td colspan="2">标段名称：</td>
-                                                                <td colspan="2">翻新工程-03标段</td>
+                                                                <td colspan="2" name="biaoduanmc"></td>
                                                             </tr>
                                                             <tr style="height: 100px">
                                                                 <td colspan="3">项目内容、规模：</td>
-                                                                <td colspan="9">需要选择工程信息库中某个工程，字段审批单编号由系统自动生成，字段指挥部编号、指挥部名称、收款单位、服务类型编号、服务类型名称、项目编号、项目名称、工程性质、项目内容规模、计划资金总额、暂定金额、计量支付审定资金、质保金扣除由项目信息库中导入生成，字段拨款依据、本期变更金额、本期申请资金、本期核定拨付资金、计划服务费用、申请理由、职能部门意见由申请人手工录入，其中申请理由附件由申请人选择项目库信息中的附件，字段清单价及安全生产经费、累计变更金额、至上期累计拨付资金、未付资金、应付资金、本期累计拨付资金由系统根据手工输入和项目信息库中的数据计算得出。
-                                                                </td>
+                                                                <td colspan="9" name="xiangmunrgm"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">拨款依据：</td>
                                                                 <td colspan="3">
-                                                                    <select class="form-control back-border-none" name="account" style="color: red;">
-                                                                        <option>请选择文件</option>
-                                                                        <option>option 2</option>
-                                                                        <option>option 3</option>
-                                                                        <option>option 4</option>
-                                                                    </select>
+                                                                    <input type="text" class="form-control back-border-none" placeholder="请输入拨款依据" name="bokuanyj">
                                                                 </td>
                                                                 <td colspan="3">工程状态：</td>
-                                                                <td colspan="3">
-                                                                    <select class="form-control back-border-none" name="account" style="color: red;">
-                                                                        <option>请选择状态</option>
-                                                                        <option>未完成</option>
-                                                                        <option>在建</option>
-                                                                        <option>已完成</option>
-                                                                    </select>
-                                                                </td>
+                                                                <td colspan="3" name="gongchengzt"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">暂定金额：</td>
-                                                                <td colspan="3">521万元</td>
-                                                                <td colspan="3">计划资金总额：</td>
-                                                                <td colspan="3">1120万元</td>
+                                                                <td colspan="3" name="zandingje"></td>
+                                                                <td colspan="3">合同金额：</td>
+                                                                <td colspan="3" name="hetongje"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">合同清单价</td>
-                                                                <td colspan="3">110万元</td>
+                                                                <td colspan="3" name="hetongqdj"></td>
                                                                 <td colspan="3">安全经费：</td>
-                                                                <td colspan="3">12万元</td>
+                                                                <td colspan="3" name="anquanjf"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">计量支付审定资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3">
+                                                                    <input type="text" class="form-control back-border-none" placeholder="请输入计量支付审定资金" name="jiliangzfsdzj">
+                                                                </td>
                                                                 <td colspan="3">至上期累计拨付资金：</td>
-                                                                <td colspan="3">852万元</td>
+                                                                <td colspan="3" name="zhishangqljbfzj"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">未付资金：</td>
-                                                                <td colspan="3">268万元</td>
+                                                                <td colspan="3" name="weifuzj"></td>
                                                                 <td colspan="3">质保金扣除：</td>
-                                                                <td colspan="3">56万元</td>
+                                                                <td colspan="3" name="zhibaojkc"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">应付资金：</td>
-                                                                <td colspan="3">
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control back-border-none" placeholder="请输入应付资金">
-                                                                        <div class="input-group-addon back-border-none">万元</div>
-                                                                    </div>
-                                                                </td>
+                                                                <td colspan="3" name="yingfuzj"></td>
                                                                 <td colspan="3">本期申请资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3">
+                                                                    <input type="text" class="form-control back-border-none" placeholder="请输入本期申请资金" name="benqisqzj">
+                                                                </td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">本期核定拨付资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3">
+                                                                    <input type="text" class="form-control back-border-none" placeholder="请输入本期核定拨付资金" name="benqihdbfzj">
+                                                                </td>
                                                                 <td colspan="3">本期累计拨付资金：</td>
-                                                                <td colspan="3">10万元</td>
+                                                                <td colspan="3" name="benqiljbfzj"></td>
                                                             </tr>
                                                             <tr style="height: 100px">
                                                                 <td colspan="3">申请理由：</td>
-                                                                <td colspan="9">需要选择工程信息库中某个工程，字段审批单编号由系统自动生成，字段指挥部编号、指挥部名称、收款单位、服务类型编号、服务类型名称、项目编号、项目名称、工程性质、项目内容规模、计划资金总额、暂定金额、计量支付审定资金、质保金扣除由项目信息库中导入生成，字段拨款依据、本期变更金额、本期申请资金、本期核定拨付资金、计划服务费用、申请理由、职能部门意见由申请人手工录入，其中申请理由附件由申请人选择项目库信息中的附件，字段清单价及安全生产经费、累计变更金额、至上期累计拨付资金、未付资金、应付资金、本期累计拨付资金由系统根据手工输入和项目信息库中的数据计算得出。
+                                                                <td colspan="9">
+                                                                    <textarea placeholder="请输入申请理由" class="form-control back-border-none" style="resize: vertical;height: 150px" name="shenqingly"></textarea>
                                                                 </td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">职能部门意见：</td>
-                                                                <td colspan="3">通过</td>
+                                                                <td colspan="3"></td>
                                                                 <td colspan="3">财务部门意见：</td>
-                                                                <td colspan="3">通过</td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 25px">
                                                                 <td colspan="2">填报人：</td>
-                                                                <td colspan="1">马旭成</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
+                                                                <td colspan="1"></td>
+                                                                <td colspan="3"></td>
                                                                 <td colspan="2">初审人：</td>
-                                                                <td colspan="1">小宇</td>
-                                                                <td colspan="3">2017年10月16日 22:19:06</td>
+                                                                <td colspan="1"></td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">局分管领导签批：</td>
-                                                                <td colspan="3">批准拨款</td>
+                                                                <td colspan="3"></td>
                                                                 <td colspan="3">局主要领导签批：</td>
-                                                                <td colspan="3">批准拨款</td>
-                                                            </tr>
-                                                            <tr style="height: 25px">
-                                                                <td colspan="2">签字：</td>
-                                                                <td colspan="1">张辉</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
-                                                                <td colspan="2">签字：</td>
-                                                                <td colspan="1">张辉</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -267,103 +247,95 @@
                                                             <tbody>
                                                             <tr>
                                                                 <td colspan="3">建设指挥部（管理办）：</td>
-                                                                <td colspan="3">邳州市交通局</td>
+                                                                <td colspan="3" name="yulan_zhihuibumc"></td>
                                                                 <td colspan="3">编号：</td>
-                                                                <td colspan="3">0101170010001</td>
+                                                                <td colspan="3" name="yulan_shenpidbh"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">收款单位：</td>
-                                                                <td colspan="3">阿里巴巴有限公司</td>
+                                                                <td colspan="3" name="yulan_shoukuandw"></td>
                                                                 <td colspan="2">服务类型：</td>
-                                                                <td colspan="1">施工类</td>
+                                                                <td colspan="1" name="yulan_fuwulxmc"></td>
                                                                 <td colspan="2">单位：</td>
                                                                 <td colspan="1">万元</td>
                                                             </tr>
                                                             <tr style="height: 50px">
-                                                                <td colspan="3">项目名称：</td>
-                                                                <td colspan="3">泉山区道路翻新工程</td>
-                                                                <td colspan="3">工程性质：</td>
-                                                                <td colspan="3">施工类工程</td>
+                                                                <td colspan="2">项目名称：</td>
+                                                                <td colspan="2" name="yulan_xiangmumc">泉山区道路翻新工程</td>
+                                                                <td colspan="2">工程性质：</td>
+                                                                <td colspan="2" name="yulan_xiangmuxz"></td>
+                                                                <td colspan="2">标段名称：</td>
+                                                                <td colspan="2" name="yulan_biaoduanmc"></td>
                                                             </tr>
                                                             <tr style="height: 100px">
                                                                 <td colspan="3">项目内容、规模：</td>
-                                                                <td colspan="9">需要选择工程信息库中某个工程，字段审批单编号由系统自动生成，字段指挥部编号、指挥部名称、收款单位、服务类型编号、服务类型名称、项目编号、项目名称、工程性质、项目内容规模、计划资金总额、暂定金额、计量支付审定资金、质保金扣除由项目信息库中导入生成，字段拨款依据、本期变更金额、本期申请资金、本期核定拨付资金、计划服务费用、申请理由、职能部门意见由申请人手工录入，其中申请理由附件由申请人选择项目库信息中的附件，字段清单价及安全生产经费、累计变更金额、至上期累计拨付资金、未付资金、应付资金、本期累计拨付资金由系统根据手工输入和项目信息库中的数据计算得出。
-                                                                </td>
+                                                                <td colspan="9" name="yulan_xiangmunrgm"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">拨款依据：</td>
-                                                                <td colspan="3">泉山区道路翻新工程</td>
-                                                                <td colspan="3">计划资金总额：</td>
-                                                                <td colspan="3">1120万元</td>
+                                                                <td colspan="3" name="yulan_bokuanyj"></td>
+                                                                <td colspan="3">工程状态：</td>
+                                                                <td colspan="3" name="yulan_gongchengzt"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">暂定金额：</td>
-                                                                <td colspan="3">521万元</td>
-                                                                <td colspan="3">清单价及安全生产经费：</td>
-                                                                <td colspan="3">110万元</td>
+                                                                <td colspan="3" name="yulan_zandingje"></td>
+                                                                <td colspan="3">合同金额：</td>
+                                                                <td colspan="3" name="yulan_hetongje"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
-                                                                <td colspan="3">本期变更金额：</td>
-                                                                <td colspan="3">12万元</td>
-                                                                <td colspan="3">累计变更金额：</td>
-                                                                <td colspan="3">51万元</td>
+                                                                <td colspan="3">合同清单价：</td>
+                                                                <td colspan="3" name="yulan_hetongqdj"></td>
+                                                                <td colspan="3">安全经费：</td>
+                                                                <td colspan="3" name="yulan_anquanjf"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">计量支付审定资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3" name="yulan_jiliangzfsdzj"></td>
                                                                 <td colspan="3">至上期累计拨付资金：</td>
-                                                                <td colspan="3">852万元</td>
+                                                                <td colspan="3" name="yulan_zhishangqljbfzj"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">未付资金：</td>
-                                                                <td colspan="3">268万元</td>
+                                                                <td colspan="3" name="yulan_weifuzj"></td>
                                                                 <td colspan="3">质保金扣除：</td>
-                                                                <td colspan="3">56万元</td>
+                                                                <td colspan="3" name="yulan_zhbaojkc"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">应付资金：</td>
-                                                                <td colspan="3">212万元</td>
+                                                                <td colspan="3" name="yulan_yingfuzj"></td>
                                                                 <td colspan="3">本期申请资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3" name="yulan_benqisqzj"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">本期核定拨付资金：</td>
-                                                                <td colspan="3">200万元</td>
+                                                                <td colspan="3" name="yulan_benqihdbfzj"></td>
                                                                 <td colspan="3">本期累计拨付资金：</td>
-                                                                <td colspan="3">10万元</td>
+                                                                <td colspan="3" name="yulan_benqiljbfzj"></td>
                                                             </tr>
                                                             <tr style="height: 100px">
                                                                 <td colspan="3">申请理由：</td>
-                                                                <td colspan="9">需要选择工程信息库中某个工程，字段审批单编号由系统自动生成，字段指挥部编号、指挥部名称、收款单位、服务类型编号、服务类型名称、项目编号、项目名称、工程性质、项目内容规模、计划资金总额、暂定金额、计量支付审定资金、质保金扣除由项目信息库中导入生成，字段拨款依据、本期变更金额、本期申请资金、本期核定拨付资金、计划服务费用、申请理由、职能部门意见由申请人手工录入，其中申请理由附件由申请人选择项目库信息中的附件，字段清单价及安全生产经费、累计变更金额、至上期累计拨付资金、未付资金、应付资金、本期累计拨付资金由系统根据手工输入和项目信息库中的数据计算得出。
-                                                                </td>
+                                                                <td colspan="9" name="yulan_shenqingly"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">职能部门意见：</td>
-                                                                <td colspan="3">通过</td>
+                                                                <td colspan="3" name="yulan_tianbaoyj"></td>
                                                                 <td colspan="3">财务部门意见：</td>
-                                                                <td colspan="3">通过</td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 25px">
-                                                                <td colspan="2">填报人：</td>
-                                                                <td colspan="1">马旭成</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
-                                                                <td colspan="2">初审人：</td>
-                                                                <td colspan="1">小宇</td>
-                                                                <td colspan="3">2017年10月16日 22:19:06</td>
+                                                                <td colspan="1">填报人：</td>
+                                                                <td colspan="2" name="yulan_tianbaor"></td>
+                                                                <td colspan="3" name="yulan_tianbaorq"></td>
+                                                                <td colspan="1">初审人：</td>
+                                                                <td colspan="2"></td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
                                                                 <td colspan="3">局分管领导签批：</td>
-                                                                <td colspan="3">批准拨款</td>
+                                                                <td colspan="3"></td>
                                                                 <td colspan="3">局主要领导签批：</td>
-                                                                <td colspan="3">批准拨款</td>
-                                                            </tr>
-                                                            <tr style="height: 25px">
-                                                                <td colspan="2">签字：</td>
-                                                                <td colspan="1">张辉</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
-                                                                <td colspan="2">签字：</td>
-                                                                <td colspan="1">张辉</td>
-                                                                <td colspan="3">2017年10月16日 21:19:06</td>
+                                                                <td colspan="3"></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -385,13 +357,14 @@
                                 <div class="panel-body">
                                     <div class="table-responsive">
                                         <div class="row m-b-sm m-t-sm">
-                                            <div class="col-md-4">
+                                            <div class="col-md-5">
+                                                <button class="btn btn-info " type="button" id="chakanqbgd"><i class="fa fa-paste"></i>全部</button>
                                                 <button class="btn btn-info " type="button" id="chakanwwcgd"><i class="fa fa-paste"></i>未完成</button>
                                                 <button class="btn btn-success " type="button" id="chakanwclgd"><i class="fa fa-paste"></i>未处理</button>
                                                 <button class="btn btn-primary " type="button" id="chakanywcgd"><i class="fa fa-paste"></i>已完成</button>
                                                 <button class="btn btn-danger " type="button" id="chakanzfgd"><i class="fa fa-paste"></i>作废</button>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <div class="input-group">
                                                     <div class="input-group-btn">
                                                         <button data-toggle="dropdown" class="btn btn-white btn-sm dropdown-toggle" type="button" aria-expanded="false" id="sousuoxx">请选择搜索类型</button>
@@ -409,28 +382,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--
-                                            <div class="col-md-1">
-                                                <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" ><i class="fa fa-refresh"></i> Refresh</button>
-                                            </div>
-                                            <div class="col-md-11">
-                                                <div class="input-group">
-                                                    <div class="input-group-btn">
-                                                        <button data-toggle="dropdown" class="btn btn-white btn-sm dropdown-toggle" type="button" aria-expanded="false">Action <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#"></a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <input type="text" class="input-sm form-control">
-                                                    <div class="input-group-btn">
-                                                        <button type="button" class="btn btn-primary btn-sm">搜索</button>
-                                                    </div>
-                                                </div>
-                                            </div>-->
                                         </div>
                                         {{> gongdanlb shuju_gongdanlb = shuju_gongdanlb}}
                                     </div>
