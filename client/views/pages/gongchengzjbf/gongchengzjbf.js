@@ -77,7 +77,7 @@ Template.gongchengzjbf.onCreated(function () {
     Tracker.autorun(function () {
         //获取原始审批表数据
         Template.instance().yuanshi_zijinbflcxx.set(tb_gc_zijinbflcxx.find({}));
-        //获取当前显示在页面上的审批表数据-初始化时和原始数据相同
+        //获取当前显示在页面上的审批表数据-初始化时和原始数据相同 
         Template.instance().zijinbflcxx.set(Template.instance().yuanshi_zijinbflcxx.get());
         //获取项目库信息
         Template.instance().xiangmukxx.set(tb_gc_xiangmuk.find({}));

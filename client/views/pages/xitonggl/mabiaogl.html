@@ -1,0 +1,118 @@
+<template name="mabiaogl">
+
+    {{> pageHeading title='码表管理'}}
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="ibox-title">
+                <h3 class="pull-left">码表</h3>
+                <button id="mabiaoxz" type="button" class="pull-right btn btn-sm btn-primary" data-toggle="modal" data-target='#myModal'> 新增 </button>
+                <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content animated bounceInRight">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title">新增码值</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="get" class="form-horizontal">
+                                    <div class="form-group"><label class="col-sm-2 control-label">编号</label>
+                                        <div class="col-sm-10"><input id="xinzengbh" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">码值</label>
+                                        <div class="col-sm-10"><input id="xinzengmz" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="xinzengqx" type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                                <button id="xinzengbc" type="button" class="btn btn-primary">保存新增</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 600px;" class="ibox-content col-lg-3">
+                <div id="jstree">
+                    <ul>
+                        <li class="jstree-open">基础信息库
+                            <ul>
+                                <li id="mabiao_niandu">年度</li>
+                                <li id="mabiao_zhihuib">指挥部</li>
+                                <li id="mabiao_gongchengzt">工程状态</li>
+                                <li id="mabiao_xiangmufl">项目分类</li>
+                                <li id="mabiao_fuwulx">服务类型</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny text-center" data-page-size="15">
+                        <thead>
+                        <tr>
+                            <!--<th class="text-center">码表编号</th>-->
+                            <!--<th class="text-center" data-hide="phone">码表名称</th>-->
+                            <th class="text-center" data-hide="phone">编号</th>
+                            <th class="text-center" data-hide="phone">码值</th>
+                            <th class="text-center" data-hide="phone">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each shuju_mabiaoxx}}
+                        <tr>
+                            <td>{{bianhao}}</td>
+                            <td>{{mazhi}}</td>
+                            <td>
+                                <button  id="mazhisc" name="{{bianhao}}" class=" btn btn-xs btn-danger">删除</button>
+                                <button  id="mazhibj" name="{{bianhao}}" class=" btn btn-xs btn-primary" data-toggle="modal" data-target='#myModal1'>编辑</button>
+                                <div class="modal inmodal" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content animated bounceInRight">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span
+                                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title">编辑码值</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="get" class="form-horizontal">
+                                                    <div class="form-group"><label class="col-sm-2 control-label">编号</label>
+                                                        <div class="col-sm-10"><input id="bianjibh" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group"><label class="col-sm-2 control-label">码值</label>
+                                                        <div class="col-sm-10"><input id="bianjimz" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="bianjiqx" type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                                                <button id="bianjibc" type="button" class="btn btn-primary">保存修改</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <ul class="pagination pull-right"></ul>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
