@@ -28,10 +28,18 @@
                     </div>
                 </li>
                 <li class="{{isActivePath regex='/xiangmukgl'}}">
-                    <a href="xiangmukgl"><i class="fa fa-diamond"></i> <span class="nav-label">工程资金拨付</span> </a>
+                    <a href="xiangmukgl"><i class="fa fa-diamond"></i> <span class="nav-label">项目库管理</span> </a>
                 </li>
                 <li class="{{isActivePath regex='/gongchengzjbf'}}">
                     <a href="gongchengzjbf"><i class="fa fa-diamond"></i> <span class="nav-label">工程资金拨付</span> </a>
+                </li>
+                <li class="{{isActivePath regex='gongchengzjbftj|gongchengzjbfmx|gongchengzjbfhz'}}">
+                    <a href="#"><i class="fa fa-cog"></i> <span class="nav-label" data-i18n="nav.dashboard">综合统计查询</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse {{isActivePath regex='gongchengzjbftj|gongchengzjbfmx|gongchengzjbfhz' className='in'}}">
+                        <li class="{{isActivePath regex='/gongchengzjbftj'}}"><a href="gongchengzjbftj">资金拨付统计</a></li>
+                        <li class="{{isActivePath regex='/gongchengzjbfmx'}}"><a href="gongchengzjbfmx">资金拨付明细</a></li>
+                        <li class="{{isActivePath regex='/gongchengzjbfhz'}}"><a href="gongchengzjbfhz">资金拨付汇总</a></li>
+                    </ul>
                 </li>
                 <li class="{{isActivePath regex='rizhigl|mabiaogl'}}">
                     <a href="#"><i class="fa fa-cog"></i> <span class="nav-label" data-i18n="nav.dashboard">系统管理</span> <span class="fa arrow"></span></a>

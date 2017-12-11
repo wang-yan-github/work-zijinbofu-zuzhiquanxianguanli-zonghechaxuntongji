@@ -42,20 +42,11 @@ Meteor.startup(function () {
         }}*/);
     });
     Meteor.publish('zijinbofu_xiangmuk', function () {
-        return tb_gc_xiangmuk.find({}/*,{fields:{
-            'shenpidbh':true,
-            'shoukuandw':true,
-            'fuwulxbh':true,
-            'fuwulxmc':true,
-            'xiangmubh':true,
-            'xiangmumc':true,
-            'gongchengxz':true,
-            'hetongje':true,
-            'hetongqdj':true,
-            'zhishangqljbfzj':true,
-            'dangqiangdzt':true,
-            'dangqianclzt':true,
-        }}*/);
+        return tb_gc_xiangmuk.find({});
+    });
+    //编号信息
+    Meteor.publish('xitongguanli_bianhaoxx', function () {
+        return ts_gc_bianhaoxx.find({});
     });
 });
 

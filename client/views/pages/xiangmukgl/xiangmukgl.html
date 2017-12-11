@@ -1,0 +1,123 @@
+<template name="xiangmukgl">
+
+    {{> pageHeading title='项目库管理'}}
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="sidebar-panel-left fullscreen scroll_content">
+                <div class="file-manager">
+                    <h5>工程项目库</h5>
+                    {{#each mabiao_xiangmuflxx}}
+                        <a href="#" class="file-control" name="shaixuan_fenlei">{{mazhi}}</a>
+                    {{/each}}
+                    <br>
+                    {{#each mabiao_fuwulxxx}}
+                        <a href="#" class="file-control" name="shaixuan_fenlei">{{mazhi}}</a>
+                    {{/each}}
+                    <div class="hr-line-dashed"></div>
+                    <div class="user-button">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" id="daoruxm"><i
+                                        class="fa fa-database"></i> 导入项目
+                                </button>
+                                <button type="button" style="display: none" id="xuanzexm">选择项目</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#xinjianxmxx"><i
+                                        class="fa fa-database"></i> 新建项目
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <a class="pull-right" id="chongzhixms">重置</a>
+                    <h5>项目树</h5>
+                    <input type="text" id="sousuoxms" class="form-control input-sm m-b-xs" placeholder="搜索项目树...">
+                    <div id="gongchengxxxms">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 fullscreen scroll_content">
+            <div class="wrapper wrapper-content" >
+                {{> Template.dynamic template = dangqianmbmc data = shuju}}
+            </div>
+        </div>
+    </div>
+    <!-- 新建项目基础信息对话框 -->
+    <div class="modal inmodal fade" id="xinjianxmxx"
+         tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">项目基础信息</h4>
+                </div>
+                <form role="form" action="" id="xinzengxm">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <fieldset class="form-horizontal">
+                                    <div class="form-group"><label class="col-sm-4 control-label">项目名称:</label>
+                                        <div class="col-sm-8"><input type="text" name="xiangmuxz_xiangmumc" class="form-control" placeholder="项目名称" ></div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-4 control-label">指挥部名称:</label>
+                                        <div class="col-sm-8">
+                                            <select data-placeholder="请选择工程名称..." name="xiangmuxz_zhihuib" class="select-chosen">
+                                                {{#each mabiao_zhihuibxx}}
+                                                    <option value="{{bianhao}}">{{mazhi}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-4 control-label">年度:</label>
+                                        <div class="col-sm-8">
+                                            <select data-placeholder="请选择项目年度..." name="xiangmuxz_xiangmund" class="select-chosen">
+                                                {{#each mabiao_nianduxx}}
+                                                    <option value="{{bianhao}}">{{mazhi}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-4 control-label">项目分类:</label>
+                                        <div class="col-sm-8">
+                                            <select data-placeholder="请选择项目分类..." name="xiangmuxz_xiangmufl" class="select-chosen">
+                                                {{#each mabiao_xiangmuflxx}}
+                                                    <option value="{{bianhao}}">{{mazhi}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-4 control-label">工程性质:</label>
+                                        <div class="col-sm-8">
+                                            <select data-placeholder="请选择工程性质..." name="xiangmuxz_gongchengxz" class="select-chosen">
+                                                {{#each mabiao_gongchengxzxx}}
+                                                    <option value="{{bianhao}}">{{mazhi}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="message">简介：</label>
+                                        <textarea class="form-control" name="xiangmuxz_xiangmujj" id="message" rows="10" placeholder="简介 ..." ></textarea>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 新建项目基础信息对话框 -->
+
+</template>

@@ -5,7 +5,11 @@ FlowRouter.route('/', {
     }
 });
 /*项目库管理模块*/
-
+FlowRouter.route('/xiangmukgl', {
+    action: function() {
+        BlazeLayout.render('mainLayout', {content: 'xiangmukgl'});
+    }
+});
 /*工程资金拨付模块*/
 FlowRouter.route('/gongchengzjbf', {
     action: function() {
@@ -59,10 +63,8 @@ FlowRouter.notFound = {
     }
 };
 /*全局触发器*/
-/*
 FlowRouter.triggers.enter([function() {
     if(Session.get('user') === undefined){
         FlowRouter.go('/denglu');
     }
 }], {except: ['denglu']});
-*/

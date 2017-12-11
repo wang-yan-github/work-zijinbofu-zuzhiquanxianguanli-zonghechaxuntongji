@@ -33,3 +33,4 @@ reactive-var
 u2622:persistent-session
 ostrio:templatehelpers
 underscore
+tomi:upload-server

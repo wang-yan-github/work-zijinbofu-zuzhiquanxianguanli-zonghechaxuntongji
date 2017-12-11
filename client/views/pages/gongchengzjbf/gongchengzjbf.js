@@ -84,10 +84,9 @@ Template.gongchengzjbf.onCreated(function () {
     });
 });
 Template.gongchengzjbf.onRendered(function () {
-    Tracker.autorun(function () {
+    Tracker.autorun(function (computation) {
         if(handle_xmk.ready()){
-            Tracker.afterFlush(function () {
-                $(function () { $("[data-toggle='tooltip']").tooltip({html : true });});
+            Tracker.afterFlush( () => {
                 $("#wizard").steps({
                     /*事件*/
                     onStepChanging: function (event, currentIndex, newIndex) {
@@ -194,6 +193,7 @@ Template.gongchengzjbf.onRendered(function () {
                         loading: "加载中..."
                     }
                 });
+                $(function () { $("[data-toggle='tooltip']").tooltip({html : true });});
                 $('.select-chosen').chosen({width: "100%",no_results_text: "没有结果"});
                 $('#chuxianxgd').click(function (){
                     // Display a success toast, with a title
@@ -217,74 +217,14 @@ Template.gongchengzjbf.onRendered(function () {
                     };
                     toastr.success('您有一条新的工单','点击查看详情！');
                 });
+                computation.stop();
             });
         }
     });
-    function preview() {
-        $("#zijinbfsqb").print({
-            //Use Global styles
-            globalStyles : false,
-            //Add link with attrbute media=print
-            mediaPrint : false,
-            //Custom stylesheet
-            stylesheet : "css/bootstrap.min.css",
-            //Print in a hidden iframe
-            iframe : false,
-            //Don't print this
-            noPrintSelector : ".avoid-this",
-            //Log to console when printing is done via a deffered callback
-            deferred: $.Deferred().done(function() { console.log('Printing done', arguments); })
-        });
-    };
-    function chushen() {
-        $('#zijinbfspbcs').modal('hide');
-        swal({
-                title: "是否审核通过?",
-                text: "将此资金拨付申请表提交给下一个处理人员!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "通过",
-                cancelButtonText: "打回",
-                closeOnConfirm: false,
-                closeOnCancel: false },
-            function (isConfirm) {
-                if (isConfirm) {
-                    swal("通过!", "表单审核通过!", "success");
-                } else {
-                    swal("未通过!", "表单审核未通过!", "error");
-                }
-            });
-    };
-    function shangchuansmj() {
-        $('#zijinbfspbscsmj').modal('hide');
-        $('#zijinbfspbbj').modal('hide');
-        swal({
-                title: "是否需要提交?",
-                text: "将此资金拨付申请表提交给下一个处理人员!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "提交",
-                cancelButtonText: "仅保存",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function (isConfirm) {
-                if (isConfirm) {
-                    swal("提交!", "您的表单提交成功!", "success");
-                } else {
-                    swal("保存!", "您的表单保存成功!", "success");
-                }
-            });
-    };
 });
 Template.gongchengzjbf.helpers({
     shuju_gongdanlb:function () {
         return Template.instance().zijinbflcxx.get();
-    },
-    shuju_xiangmukxx:function () {
-        return Template.instance().xiangmukxx.get();
     },
     shuju_xiangmund:function () {
         return _.union(_.pluck(Template.instance().xiangmukxx.get().fetch(),'xiangmund'));

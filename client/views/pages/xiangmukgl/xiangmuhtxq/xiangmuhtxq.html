@@ -1,0 +1,271 @@
+<template name="xiangmuhtxq">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-content">
+                    <div class="mail-box-header clearbab" style="padding-top: 0px">
+                        {{#if shuju_hetongxx.biaoduanmc}}
+                            <h2 class="font-bold text-uppercase">{{shuju_hetongxx.biaoduanmc}}</h2>
+                        {{/if}}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mail-tools tooltip-demo m-t-md">
+                                    <h5>
+                                        <span class="font-normal">单位名称: </span>{{shuju_hetongxx.danweimc}}
+                                    </h5>
+                                    <h5>
+                                        <span class="font-normal">服务类型: </span>{{shuju_hetongxx.fuwulxmc}}
+                                    </h5>
+                                    <h5>
+                                        <span class="font-normal">合同金额(万元): </span>{{shuju_hetongxx.hetongje}}
+                                    </h5>
+                                    <h5>
+                                        <span class="font-normal">暂定金额(万元): </span>{{shuju_hetongxx.zandingje}}
+                                    </h5>
+                                    <h5>
+                                        <span class="font-normal">质保金额(万元): </span>{{shuju_hetongxx.zhibaoj}}
+                                    </h5>
+                                    <h5>
+                                        <span class="font-normal">计量支付审定资金(万元): </span>{{shuju_hetongxx.jiliangzfsdzj}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mail-tools tooltip-demo m-t-md">
+                                    <h5>
+                                        <span class="font-normal">合同说明: </span>
+                                    </h5>
+                                    <div class="well">{{shuju_hetongxx.hetongsm}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mail-box clearbab">
+                        <div class="mail-body">
+                            <div class="row m-t-sm">
+                                <div class="col-lg-12">
+                                    <div class="tabs-container">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active">
+                                                <a data-toggle="tab"> 资金拨付明细</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active">
+                                                <div class="panel-body">
+                                                    <table class="table text-center">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="text-center">审批单编号</th>
+                                                            <th class="text-center">资金拨付日期</th>
+                                                            <th class="text-center">支付时间</th>
+                                                            <th class="text-center">支付金额(万元)</th>
+                                                            <th class="text-center">累计拨付金额(万元)</th>
+                                                            <th class="text-center">审定金额(万元)</th>
+                                                            <th class="text-center">填报人</th>
+                                                            <th class="text-center">初审人</th>
+                                                            <th class="text-center">附件</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {{#each shuju_hetongxx.zijinbfxx}}
+                                                            <tr>
+                                                                <td>{{shenpidbh}}</td>
+                                                                <td>{{zijinbfrq}}</td>
+                                                                <td>{{querenzfsj}}</td>
+                                                                <td>{{zhifuje}}</td>
+                                                                <td>{{leijibfje}}</td>
+                                                                <td>{{shendingje}}</td>
+                                                                <td>{{tianbaor}}</td>
+                                                                <td>{{chushenr}}</td>
+                                                                <td><a href="#">审批表</a></td>
+                                                            </tr>
+                                                        {{/each}}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mail-box clearbab">
+                            <div class="mail-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">合同文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.hetongwj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{hetongwjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{hetongwjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">审计文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.shenjiwj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{shenjiwjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{shenjiwjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">交工验收文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.jiaogongyswj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{jiaogongyswjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{jiaogongyswjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">竣工验收文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.jungongyswj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{jungongyswjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{jungongyswjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">履约保函文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.lvyuebhwj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{lvyuebhwjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{lvyuebhwjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">开工预付款申请文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.kaigongyfksqwj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{kaigongyfksqwjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{kaigongyfksqwjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="tag-title">开工预付款保函文件</h5>
+                                        <ul class="tag-list" style="padding: 0">
+                                            {{#each shuju_hetongxx.hetongwjxx.kaigongyfkbhwj}}
+                                                <li><a class="file-view" title="{{kaigongyfkbhwjmc}}">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-file fa-3x"></i>
+                                                        </div>
+                                                        <div class="col-xs-10">
+                                                            <div class="text-center text-ellipsis">
+                                                                {{kaigongyfkbhwjmc}}
+                                                            </div>
+                                                            <div class="text-center">
+                                                                {{kaigongyfkbhwjbh}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

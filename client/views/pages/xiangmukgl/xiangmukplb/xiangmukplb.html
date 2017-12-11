@@ -1,0 +1,9 @@
+<template name="xiangmukplb">
+    <div class="row">
+        {{#each shuju_xiangmukxx}}
+            <div class="col-md-4">
+                {{> xiangmukp shuju_xiangmuxx = this}}
+            </div>
+        {{/each}}
+    </div>
+</template>

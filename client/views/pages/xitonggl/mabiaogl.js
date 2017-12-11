@@ -109,9 +109,9 @@ Template.mabiaogl.events({
         $('#bianjibh').val( dangqian.bianhao);
         $('#bianjimz').val( dangqian.mazhi);
         dangqianbjxb = mabiao.mabiaoxx.indexOf(dangqian);
-        },
+    },
         
-     'click #bianjibc':function (event) {
+    'click #bianjibc':function (event) {
          var bianjibh = $('#bianjibh').val();
          var bianjimz = $('#bianjimz').val();
          var mabiao = _.findWhere(Session.get('yuanshi_mabiaoxx'),{mabiaomc:dangqianym});
@@ -120,7 +120,7 @@ Template.mabiaogl.events({
          Session.set('mabiaoxx',mabiao.mabiaoxx);
          ts_gc_mabiaoxx.update({_id:mabiao._id},{$set:mabiao});
          $('#myModal1').modal('hide');
-     }
+    }
    
 });
 
