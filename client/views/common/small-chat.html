@@ -1,3 +1,239 @@
-<template name="small-chat">
+<template name="smallChat">
+    <!-- 聊天框 -->
+    <div class="small-chat-box fadeInRight animated" style="width: 27%;height: 60%">
+        <div class="heading" draggable="true">
+            <small class="chat-date pull-right">
+                <a href="#tab-person" data-toggle="tab" class="badge badge-primary" style="color: #FFFFFF"><i class="fa fa-address-book" aria-hidden="true"></i>选择</a>
+            </small>
+            Small chat
+        </div>
 
+        <div class="tabs-container" id="tab-chat">
+
+            <div class="tabs-left">
+                <ul class="nav nav-tabs">
+                    <li class="active btn-outline"><a data-toggle="tab" href="#tab-6">张三</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-7">李四</a></li>
+                </ul>
+                <div class="tab-content ">
+                    <div id="tab-6" class="tab-pane active">
+                        <div class="content">
+                            <div class="left">
+                                <div class="author-name">张三<small class="chat-date">10:02</small>
+                                </div>
+                                <div class="chat-message active">
+                                    工单审核没？
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="author-name">王五<small class="chat-date">10:24</small>
+                                </div>
+                                <div class="chat-message">
+                                    不合格
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-7" class="tab-pane">
+                        <div class="content">
+                            <div class="left">
+                                <div class="author-name">李四<small class="chat-date">10:02</small>
+                                </div>
+                                <div class="chat-message active">
+                                    请查看审核表
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="author-name">王五<small class="chat-date">10:24</small>
+                                </div>
+                                <div class="chat-message">
+                                    ok
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-chat footer">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn"> <button
+                                    class="btn btn-primary" type="button">发送</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="small-chat">
+        <span class="badge badge-warning pull-right">1</span>
+        <a class="open-small-chat">
+            <i class="fa fa-comments"></i>
+        </a>
+    </div>
+
+    <!--模态框 消息列表-->
+    <div class="modal fade bs-example-modal-lg" id="myChatList" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息列表</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="cxtj_chatfsr">发送人</label>
+                                    <input type="text" id="cxtj_chatfsr" name="cxtj_chatfsr" value="" placeholder="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="cxtj_chatksnd">开始年度</label>
+                                    <div class="input-group date">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="cxtj_chatksnd" type="text" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="cxtj_chatjsnd">结束年度</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="cxtj_chatjsnd" type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="cxtj_chatcx">操作</label>
+                                    <button type="button" class="form-control btn btn-outline btn-primary" id="cxtj_chatcx">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>发送人</th>
+                            <th>时间</th>
+                            <th>内容</th>
+                            <th>类型</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>张三</td>
+                            <td>2017-10-13 12:10:10</td>
+                            <td>请查看审批表</td>
+                            <td>人员</td>
+                        </tr>
+                        <tr>
+                            <td>李四</td>
+                            <td>2017-10-12 10:10:10</td>
+                            <td>请确认拨款</td>
+                            <td>财务</td>
+                        </tr>
+                        <tr>
+                            <td>管理员</td>
+                            <td>2017-10-11 10:10:10</td>
+                            <td>请重新审批</td>
+                            <td>系统信息</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!--模态框 历史消息-->
+    <div class="modal fade bs-example-modal-lg" id="myChatHistory" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">历史消息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="chat-discussion">
+
+                        <div class="chat-message left">
+                            <img class="message-avatar" src="img/a1.jpg" alt="" >
+                            <div class="message">
+                                <a class="message-author" href="#">张三</a>
+                                <span class="message-date">2017-10-10 10:10:10</span>
+                                <span class="message-content">请查看审批</span>
+                            </div>
+                        </div>
+                        <div class="chat-message right">
+                            <img class="message-avatar" src="img/a6.jpg" alt="" >
+                            <div class="message">
+                                <span class="message-date">2017-10-10 11:11:11</span>
+                                <a class="message-author" href="#">王五</a>
+                                <span class="message-content">好的</span>
+                            </div>
+                        </div>
+                        <div class="chat-message right">
+                            <img class="message-avatar" src="img/a6.jpg" alt="" >
+                            <div class="message">
+                                <span class="message-date">2017-10-10 12:12:12</span>
+                                <a class="message-author" href="#">王五</a>
+                                <span class="message-content">请重新提交</span>
+                            </div>
+                        </div>
+                        <div class="chat-message left">
+                            <img class="message-avatar" src="img/a1.jpg" alt="" >
+                            <div class="message">
+                                <a class="message-author" href="#">张三</a>
+                                <span class="message-date">2017-10-10 13:13:13</span>
+                                <span class="message-content">审批未确认</span>
+                            </div>
+                        </div>
+                        <div class="chat-message right">
+                            <img class="message-avatar" src="img/a6.jpg" alt="" >
+                            <div class="message">
+                                <a class="message-author" href="#">王五</a>
+                                <span class="message-date">2017-10-10 15:15:15</span>
+                                <span class="message-content">嗯,明白</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!--模态框 工单任务列表-->
+    <div class="modal fade bs-example-modal-lg" id="myTask" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">工单任务</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </template>

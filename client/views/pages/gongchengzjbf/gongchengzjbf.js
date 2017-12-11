@@ -63,7 +63,7 @@ var gongdanxz = {
 };
 Template.gongchengzjbf.onCreated(function () {
     //订阅：工程资金拨付审批表
-    this.subscribe('zijinbofu_gongdanxx');
+    this.subscribe('zijinbofu_gongdanxx',Session.get('user').quanxianxx);
     //订阅：项目库-新增工程资金拨付审批表时需要
     handle_xmk = this.subscribe('zijinbofu_xiangmuk');
     /*显示工程资金拨付工单信息*/
@@ -195,28 +195,6 @@ Template.gongchengzjbf.onRendered(function () {
                 });
                 $(function () { $("[data-toggle='tooltip']").tooltip({html : true });});
                 $('.select-chosen').chosen({width: "100%",no_results_text: "没有结果"});
-                $('#chuxianxgd').click(function (){
-                    // Display a success toast, with a title
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": false,
-                        "progressBar": true,
-                        "preventDuplicates": false,
-                        "positionClass": "toast-top-right",
-                        "showDuration": "400",
-                        "hideDuration": "1000",
-                        "timeOut": "7000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                    toastr.options.onclick = function() {
-                        $('#zijinbfspbscsmj').modal('show');
-                    };
-                    toastr.success('您有一条新的工单','点击查看详情！');
-                });
                 computation.stop();
             });
         }
