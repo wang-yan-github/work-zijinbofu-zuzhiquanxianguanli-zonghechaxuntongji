@@ -1,12 +1,13 @@
 <template name="gongdan">
     <tr class="{{#if compare shuju_gongdan.dangqiangdzt '===' '作废' }}line-through{{/if}}">
         <td class="project-title" width="25%">
-            <a href="#" class="vote-title" style="font-weight: inherit;margin-left: 0;font-size: 16px;">
+            <span href="#" class="vote-title" style="font-weight: inherit;margin-left: 0;font-size: 16px;">
                 {{shuju_gongdan.xiangmumc}}
-            </a>
+            </span>
             <div class="vote-info" style="margin-left: 0">
-                <i class="fa fa-comments-o"></i> <a href="#">{{shuju_gongdan.shoukuandw}}</a>
-                <i class="fa fa-clock-o"></i> <a href="#">{{shuju_gongdan.fuwulxmc}}</a>
+                <i class="fa fa-comments-o"></i> <span>{{shuju_gongdan.shoukuandw}}</span>
+                <i class="fa fa-clock-o"></i> <span>{{shuju_gongdan.fuwulxmc}}</span>
+                <i class="fa fa-clock-o"></i> <span>{{shuju_gongdan.xiangmuflmc}}</span>
             </div>
         </td>
         <td class="project-completion" width="25%">
@@ -15,7 +16,7 @@
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item active">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>马旭成</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">填报</div>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>小宇</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">初审</div>
@@ -31,7 +32,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>王言</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">签批</div>
@@ -39,7 +40,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>张辉</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">拨付</div>
@@ -53,7 +54,7 @@
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>马旭成</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">填报</div>
@@ -61,7 +62,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item active">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>小宇</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">初审</div>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>王言</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">签批</div>
@@ -77,7 +78,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>张辉</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">拨付</div>
@@ -91,7 +92,7 @@
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>马旭成</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">填报</div>
@@ -99,7 +100,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>小宇</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">初审</div>
@@ -107,7 +108,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item active">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>王言</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">签批</div>
@@ -115,7 +116,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item negative">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>张辉</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">拨付</div>
@@ -129,7 +130,7 @@
                 <div class="row">
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>马旭成</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">填报</div>
@@ -137,7 +138,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>小宇</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">初审</div>
@@ -145,7 +146,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>王言</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">签批</div>
@@ -153,7 +154,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="horizontal-timeline-item active">
-                            <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>张辉</h3>'>
+                            <div class="horizontal-timeline-icon navy-bg">
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <div class="horizontal-timeline-content">拨付</div>
@@ -167,7 +168,7 @@
                     <div class="row">
                         <div class="col-xs-3">
                             <div class="horizontal-timeline-item">
-                                <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>马旭成</h3>'>
+                                <div class="horizontal-timeline-icon navy-bg">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
                                 <div class="horizontal-timeline-content">填报</div>
@@ -175,7 +176,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="horizontal-timeline-item">
-                                <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>小宇</h3>'>
+                                <div class="horizontal-timeline-icon navy-bg">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
                                 <div class="horizontal-timeline-content">初审</div>
@@ -183,7 +184,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="horizontal-timeline-item">
-                                <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>王言</h3>'>
+                                <div class="horizontal-timeline-icon navy-bg">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
                                 <div class="horizontal-timeline-content">签批</div>
@@ -191,7 +192,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="horizontal-timeline-item">
-                                <div class="horizontal-timeline-icon navy-bg" data-toggle="tooltip" title='<h3>张辉</h3>'>
+                                <div class="horizontal-timeline-icon navy-bg">
                                     <i class="fa fa-briefcase"></i>
                                 </div>
                                 <div class="horizontal-timeline-content">拨付</div>
@@ -220,20 +221,26 @@
         </td>
         <td class="project-actions" width="20%">
             <button id="chakanzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbck"><i class="fa fa-folder"></i> 查看 </button>
-            {{#if compare shuju_gongdan.dangqiangdzt '===' '作废'}}
-                <button id="chakanzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbck"><i class="fa fa-folder"></i> 新建 </button>
-            {{else}}
-                {{#if compare shuju_gongdan.dangqianclzt '===' '填报'}}
-                    <button id="bianjizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbj"><i class="fa fa-folder"></i> 编辑 </button>
+            {{#if compare shuju_gongdan.dangqiangdzt '!=' '作废'}}
+                {{#if compare shuju_gongdan.dangqianclzt '==' '填报'}}
+                    {{#if compare user.zhanghaolx '!=' '财务'}}
+                        <button id="bianjizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbj"><i class="fa fa-folder"></i> 编辑 </button>
+                    {{/if}}
                 {{/if}}
-                {{#if compare shuju_gongdan.dangqianclzt '===' '初审'}}
-                    <button id="chushenzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbcs"><i class="fa fa-folder"></i> 初审 </button>
+                {{#if compare shuju_gongdan.dangqianclzt '==' '初审'}}
+                    {{#if compare user.zhanghaolx '!=' '普通'}}
+                        <button id="chushenzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbcs"><i class="fa fa-folder"></i> 初审 </button>
+                    {{/if}}
                 {{/if}}
-                {{#if compare shuju_gongdan.dangqianclzt '===' '签批'}}
-                    <button id="qianpizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbscsmj"><i class="fa fa-folder"></i> 签批 </button>
+                {{#if compare shuju_gongdan.dangqianclzt '==' '签批'}}
+                    {{#if compare user.zhanghaolx '!=' '财务'}}
+                        <button id="qianpizjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbscsmj"><i class="fa fa-folder"></i> 签批 </button>
+                    {{/if}}
                 {{/if}}
-                {{#if compare shuju_gongdan.dangqianclzt '===' '拨付'}}
-                    <button id="bofuzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbf"><i class="fa fa-folder"></i> 拨付 </button>
+                {{#if compare shuju_gongdan.dangqianclzt '==' '拨付'}}
+                    {{#if compare user.zhanghaolx '!=' '普通'}}
+                        <button id="bofuzjbfspb" class="btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#zijinbfspbbf"><i class="fa fa-folder"></i> 拨付 </button>
+                    {{/if}}
                 {{/if}}
             {{/if}}
         </td>

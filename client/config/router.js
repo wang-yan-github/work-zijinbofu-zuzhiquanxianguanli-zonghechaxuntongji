@@ -49,6 +49,13 @@ FlowRouter.route('/mabiaogl', {
     }
 });
 
+//组织权限管理
+FlowRouter.route('/zuzhiqxgl', {
+    action: function() {
+        BlazeLayout.render('mainLayout', {content: 'zuzhiqxgl'});
+    }
+});
+
 /*通用功能模块*/
 FlowRouter.route('/denglu', {
     name:'denglu',

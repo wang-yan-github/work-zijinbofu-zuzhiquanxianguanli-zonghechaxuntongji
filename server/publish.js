@@ -35,7 +35,14 @@ Meteor.startup(function () {
         }
         return tb_gc_zijinbflcxx.find({});
     });
-    Meteor.publish('zijinbofu_xiangmuk', function () {
+    Meteor.publish('zijinbofu_xiangmuk', function (quanxianxx) {
+        var chaxuntj = [];
+        if(quanxianxx){
+            for(var i = 0;i < quanxianxx.length;i++){
+                chaxuntj.push({"xiangmuflbh":quanxianxx[i]});
+            }
+            return tb_gc_xiangmuk.find({$or:chaxuntj});
+        }
         return tb_gc_xiangmuk.find({});
     });
     //编号信息

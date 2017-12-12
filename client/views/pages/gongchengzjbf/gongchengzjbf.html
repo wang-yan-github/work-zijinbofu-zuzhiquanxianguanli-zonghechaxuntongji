@@ -6,7 +6,9 @@
             <div class="col-lg-12">
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
-                        <li class="pull-right"><button class="btn btn-primary dim" data-toggle="modal" data-target="#xinjianzjbfspb" id="xinzenggczjbfspb"><i class="fa fa-money"></i> 新建资金拨付审批表</button></li>
+                        {{#if compare user.zhanghaolx '!=' '财务'}}
+                            <li class="pull-right"><button class="btn btn-primary dim" data-toggle="modal" data-target="#xinjianzjbfspb"><i class="fa fa-money"></i> 新建资金拨付审批表</button></li>
+                        {{/if}}
                     </ul>
                     <div class="modal inmodal fade" id="xinjianzjbfspb" tabindex="-1" role="dialog"  aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -57,64 +59,21 @@
                                             <div class="hr-line-dashed"></div>
                                             <div class="row" style="min-height: 300px">
                                                 <div class="col-md-12">
-                                                    <table class="myTable" border="1px" width="100%">
+                                                    <table class="myTable" border="1px" width="100%" id="lishibfxx">
                                                         <caption style="text-align: right">单位：万元</caption>
                                                         <thead>
                                                         <tr>
-                                                            <th>日期</th>
-                                                            <th>合同金额</th>
-                                                            <th>质保金</th>
-                                                            <th>上期审定金额</th>
-                                                            <th>已累计拨付资金</th>
-                                                            <th>未付资金</th>
-                                                            <th>审计金额</th>
+                                                            <th>审批表编号</th>
+                                                            <th>确认支付时间</th>
+                                                            <th>支付金额</th>
+                                                            <th>累计拨付金额</th>
+                                                            <th>审定金额</th>
+                                                            <th>查看</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td>2017年9月25日</td>
-                                                            <td>500</td>
-                                                            <td>120</td>
-                                                            <td>25</td>
-                                                            <td>210</td>
-                                                            <td>290</td>
-                                                            <td>20</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2017年9月25日</td>
-                                                            <td>500</td>
-                                                            <td>120</td>
-                                                            <td>25</td>
-                                                            <td>210</td>
-                                                            <td>290</td>
-                                                            <td>70</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2017年9月25日</td>
-                                                            <td>500</td>
-                                                            <td>120</td>
-                                                            <td>25</td>
-                                                            <td>210</td>
-                                                            <td>290</td>
-                                                            <td>50</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2017年9月25日</td>
-                                                            <td>500</td>
-                                                            <td>120</td>
-                                                            <td>25</td>
-                                                            <td>210</td>
-                                                            <td>290</td>
-                                                            <td>70</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2017年9月25日</td>
-                                                            <td>500</td>
-                                                            <td>120</td>
-                                                            <td>25</td>
-                                                            <td>210</td>
-                                                            <td>290</td>
-                                                            <td>70</td>
+                                                            <td colspan="6">等待选择中...</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -133,7 +92,7 @@
                                                                 <td colspan="3">建设指挥部（管理办）：</td>
                                                                 <td colspan="3" name="zhihuibmc"></td>
                                                                 <td colspan="3">编号：</td>
-                                                                <td colspan="3" name="shenpidbh"></td>
+                                                                <td colspan="3" name="shenpibbh"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">收款单位：</td>
@@ -218,11 +177,11 @@
                                                                 <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 25px">
-                                                                <td colspan="2">填报人：</td>
-                                                                <td colspan="1"></td>
+                                                                <td colspan="1">填报人：</td>
+                                                                <td colspan="2"></td>
                                                                 <td colspan="3"></td>
-                                                                <td colspan="2">初审人：</td>
-                                                                <td colspan="1"></td>
+                                                                <td colspan="1">初审人：</td>
+                                                                <td colspan="2"></td>
                                                                 <td colspan="3"></td>
                                                             </tr>
                                                             <tr style="height: 50px">
@@ -249,7 +208,7 @@
                                                                 <td colspan="3">建设指挥部（管理办）：</td>
                                                                 <td colspan="3" name="yulan_zhihuibumc"></td>
                                                                 <td colspan="3">编号：</td>
-                                                                <td colspan="3" name="yulan_shenpidbh"></td>
+                                                                <td colspan="3" name="yulan_shenpibbh"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">收款单位：</td>

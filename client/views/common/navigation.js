@@ -1,3 +1,9 @@
+Template.navigation.helpers({
+    yonghu:function () {
+        return Session.get('user');
+    }
+});
+
 Template.navigation.rendered = function(){
 
     // Initialize metisMenu

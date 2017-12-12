@@ -2,6 +2,7 @@ var bianjigongdanxx = {};
 var chushengongdanxx = {};
 var qianpigongdanxx = {};
 var bofugongdanxx = {};
+var shangchuansmj_biaoshi = false;
 Template.gongdanlb.onCreated(function () {
     this.chakanzjbfspb = new ReactiveVar(0);
     this.bianjizjbfspb = new ReactiveVar(0);
@@ -21,21 +22,55 @@ Template.gongdanlb.onRendered(function () {
         $('[name="bianji_benqiljbfzj"]').text('');
         $('[name="bianji_shenqingly"]').val('');
     });
-    Dropzone.options.dropzoneForm = {
-        paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 16, // MB
-        dictDefaultMessage: "<strong>拖拽文件到此处或者点击此处上传。 </strong></br> 可上传文件大小不高于16M,可选文件格式为常用文件格式。",
-        addRemoveLinks:true
-    };
+    $('#zijinbfspbsmj')[0].dropzone.on("sending", function(file,xhr,formData) {
+        formData.set('dirctory','zijinbfspbsmj');
+    });
+    $('#zijinbfspbsmj')[0].dropzone.on('success',function (file, response) {
+        var xiangying = JSON.parse(response).files[0];
+        var lishizjbfxx = {
+            "shenpibbh" : "",
+            "zhifuje" : "",
+            "querenzfsj" : "",
+            "zhishangqljbfje" : "",
+            "shendingje" : "",
+            "tianbaor" : "",
+            "chushenr" : "",
+            "shenpifj" : ""
+        };
+        //审批表编号
+        lishizjbfxx.shenpibbh = qianpigongdanxx.shenpibbh;
+        //至上期累计拨付金额
+        lishizjbfxx.zhishangqljbfje = qianpigongdanxx.zhishangqljbfzj;
+        //审定金额
+        lishizjbfxx.shendingje = qianpigongdanxx.jiliangzfsdzj;
+        //填报人
+        lishizjbfxx.tianbaor = qianpigongdanxx.shenpixx[0].xingming;
+        //初审人
+        lishizjbfxx.chushenr = qianpigongdanxx.shenpixx[1].xingming;
+        //审批表附件
+        lishizjbfxx.shenpifj = xiangying.baseUrl+xiangying.path;
+        //添加到项目库中
+        var xiangmuxx = _.findWhere(tb_gc_xiangmuk.find({}).fetch(),{xiangmubh:qianpigongdanxx.xiangmubh});
+        var hetongxx;
+        if(qianpigongdanxx.fuwulxmc == '施工'){
+            hetongxx = _.findWhere(xiangmuxx.biaoduanhtxx,{hetongbh:qianpigongdanxx.hetongbh});
+        }else{
+            hetongxx = _.findWhere(xiangmuxx.gongchenghtxx,{hetongbh:qianpigongdanxx.hetongbh});
+        }
+        hetongxx.zijinbfxx.push(lishizjbfxx);
+        tb_gc_xiangmuk.update({_id:xiangmuxx._id},{$set:xiangmuxx});
+        //上传完成标识
+        shangchuansmj_biaoshi = true;
+    });
 });
 Template.gongdanlb.events({
     /*查看功能点击事件*/
     'click #chakanzjbfspb':function (event) {
-        Template.instance().chakanzjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpidbh:this.shuju_gongdan.shenpidbh}));
+        Template.instance().chakanzjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpibbh:this.shuju_gongdan.shenpibbh}));
     },
     /*初审功能点击事件*/
     'click #chushenzjbfspb':function (event) {
-        Template.instance().chushenzjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpidbh:this.shuju_gongdan.shenpidbh}));
+        Template.instance().chushenzjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpibbh:this.shuju_gongdan.shenpibbh}));
         chushengongdanxx = Template.instance().chushenzjbfspb.get();
     },
     /*提交初审资金拨付审批表点击事件*/
@@ -72,40 +107,52 @@ Template.gongdanlb.events({
     },
     /*签批功能点击事件*/
     'click #qianpizjbfspb':function (event) {
-        Template.instance().qianpizjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpidbh:this.shuju_gongdan.shenpidbh}));
+        Template.instance().qianpizjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpibbh:this.shuju_gongdan.shenpibbh}));
         qianpigongdanxx = Template.instance().qianpizjbfspb.get();
     },
     /*提交签批资金拨付审批表点击事件*/
     'click #tijiaoqpzjbfspb':function (event) {
-        $('#zijinbfspbscsmj').modal('hide');
-        swal({
-                title: "是否进行提交?",
-                text: "将此资金拨付申请表提交给下一个处理人员!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "提交",
-                cancelButtonText: "取消",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-            function (isConfirm) {
-                var date = new Date();
-                if (isConfirm) {
+        if($('#zijinbfspbsmj')[0].dropzone.files.length == 0){
+            alert('请选择扫描件！');
+        }else{
+            $('#zijinbfspbscsmj').modal('hide');
+            swal({
+                    title: "是否进行提交?",
+                    text: "将此资金拨付申请表提交给下一个处理人员!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "提交",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function (isConfirm) {
+                    $('#zijinbfspbsmj')[0].dropzone.processQueue();
+                    var date = new Date();
                     qianpigongdanxx.dangqianclzt = '拨付';
                     qianpigongdanxx.shenpixx[2].chuliyj = '通过';
-                    qianpigongdanxx.shenpixx[2].xingming = Session.get('user').username;
+                    qianpigongdanxx.shenpixx[2].xingming = Session.get('user').xingming;
                     qianpigongdanxx.shenpixx[2].riqi = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-                    swal("通过!", "表单提交成功!", "success");
-                } else {
-                    swal("取消!", "表单未提交!", "error");
-                }
-                tb_gc_zijinbflcxx.update({_id:qianpigongdanxx._id},{$set:qianpigongdanxx});
-            });
+                    if (isConfirm) {
+                        var int = setInterval(function () {
+                            if(shangchuansmj_biaoshi){
+                                tb_gc_zijinbflcxx.update({_id:qianpigongdanxx._id},{$set:qianpigongdanxx});
+                                swal("通过!", "表单提交成功!", "success");
+                                shangchuansmj_biaoshi = false;
+                                window.clearInterval(int);
+                            }
+                        },50);
+
+                    } else {
+                        swal("取消!", "表单未提交!", "error");
+                    }
+                });
+        }
     },
     /*编辑功能点击事件*/
     'click #bianjizjbfspb':function (event) {
-        Template.instance().bianjizjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpidbh:this.shuju_gongdan.shenpidbh}));
+        Template.instance().bianjizjbfspb.set(_.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpibbh:this.shuju_gongdan.shenpibbh}));
         bianjigongdanxx = Template.instance().bianjizjbfspb.get();
     },
     /*编辑计量支付审定资金更改事件*/
@@ -171,10 +218,10 @@ Template.gongdanlb.events({
                 tb_gc_zijinbflcxx.update({_id:bianjigongdanxx._id},{$set:bianjigongdanxx});
             });
     },
-    /*提交拨付资金拨付审批表点击事件*/
+    /*拨付资金拨付审批表点击事件*/
     'click #bofuzjbfspb':function (event) {
-        bofugongdanxx = _.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpidbh:this.shuju_gongdan.shenpidbh});
-        swal({
+        bofugongdanxx = _.findWhere(Template.instance().data.shuju_gongdanlb.fetch(),{shenpibbh:this.shuju_gongdan.shenpibbh});
+        /*swal({
                 title: "是否确认拨付?",
                 text: "结束此次资金拨付流程!",
                 type: "warning",
@@ -183,7 +230,14 @@ Template.gongdanlb.events({
                 confirmButtonText: "确认",
                 cancelButtonText: "取消",
                 closeOnConfirm: false,
-                closeOnCancel: false
+                closeOnCancel: false,
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "Type your password",
+                        type: "password",
+                    },
+                }
             },
             function (isConfirm) {
                 var date = new Date();
@@ -197,8 +251,37 @@ Template.gongdanlb.events({
                     swal("取消!", "未确认拨付!", "error");
                 }
                 tb_gc_zijinbflcxx.update({_id:bofugongdanxx._id},{$set:bofugongdanxx});
-            });
+            });*/
     },
+    /*提交资金拨付审批表点击事件*/
+    'click #tijiaobfzjbfspb':function (event) {
+        var zhifuje = $('#zhifuje').val();
+        var querenbfsj = $('#querenbfsj').val();
+        if(!zhifuje){
+            alert('请填写支付金额');
+        }else if(!querenbfsj){
+            alert('请填写支付时间');
+        }else{
+            var xiangmuxx = _.findWhere(tb_gc_xiangmuk.find({}).fetch(),{xiangmubh:bofugongdanxx.xiangmubh});
+            var hetongxx;
+            if(bofugongdanxx.fuwulxmc == '施工'){
+                hetongxx = _.findWhere(xiangmuxx.biaoduanhtxx,{hetongbh:bofugongdanxx.hetongbh});
+            }else{
+                hetongxx = _.findWhere(xiangmuxx.gongchenghtxx,{hetongbh:bofugongdanxx.hetongbh});
+            }
+            hetongxx.zijinbfxx[hetongxx.zijinbfxx.indexOf(_.findWhere(hetongxx.zijinbfxx,{shenpibbh:bofugongdanxx.shenpibbh}))].querenzfsj = querenbfsj;
+            hetongxx.zijinbfxx[hetongxx.zijinbfxx.indexOf(_.findWhere(hetongxx.zijinbfxx,{shenpibbh:bofugongdanxx.shenpibbh}))].zhifuje = zhifuje;
+            console.log(xiangmuxx);
+            tb_gc_xiangmuk.update({_id:xiangmuxx._id},{$set:xiangmuxx});
+            $('#zijinbfspbbf').modal('hide');
+            var date = new Date();
+            bofugongdanxx.dangqianclzt = '完成';
+            bofugongdanxx.shenpixx[3].chuliyj = '确认拨付';
+            bofugongdanxx.shenpixx[3].xingming = Session.get('user').xingming;
+            bofugongdanxx.shenpixx[3].riqi = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+            tb_gc_zijinbflcxx.update({_id:bofugongdanxx._id},{$set:bofugongdanxx});
+        }
+    }
 });
 Template.gongdanlb.helpers({
     /*查看功能数据源*/

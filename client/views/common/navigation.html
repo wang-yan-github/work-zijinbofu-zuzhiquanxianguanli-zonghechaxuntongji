@@ -10,21 +10,15 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile">Profile</a></li>
-                            <li><a href="contacts">Contacts</a></li>
-                            <li><a href="mailbox">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login">Logout</a></li>
-                        </ul>
+                            <span class="clear"> <span class="block m-t-xs"> <h1 class="font-bold">{{yonghu.xingming}}</h1>
+                             </span></span>
+                        </a>
                     </div>
                     <div class="logo-element">
-                        IN+
+                        LiREN
                     </div>
                 </li>
                 <li class="{{isActivePath regex='/xiangmukgl'}}">
@@ -41,9 +35,10 @@
                         <li class="{{isActivePath regex='/gongchengzjbfhz'}}"><a href="gongchengzjbfhz">资金拨付汇总</a></li>
                     </ul>
                 </li>
-                <li class="{{isActivePath regex='rizhigl|mabiaogl'}}">
+                <li class="{{isActivePath regex='rizhigl|mabiaogl|zuzhiqxgl'}}">
                     <a href="#"><i class="fa fa-cog"></i> <span class="nav-label" data-i18n="nav.dashboard">系统管理</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse {{isActivePath regex='rizhigl|mabiaogl' className='in'}}">
+                    <ul class="nav nav-second-level collapse {{isActivePath regex='rizhigl|mabiaogl|zuzhiqxgl' className='in'}}">
+                        <li class="{{isActivePath regex='/zuzhiqxgl'}}"><a href="zuzhiqxgl">组织权限管理</a></li>
                         <li class="{{isActivePath regex='/rizhigl'}}"><a href="rizhigl">日志管理</a></li>
                         <li class="{{isActivePath regex='/mabiaogl'}}"><a href="mabiaogl">码表管理</a></li>
                     </ul>

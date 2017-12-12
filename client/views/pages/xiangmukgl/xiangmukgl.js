@@ -2,7 +2,7 @@ Template.xiangmukgl.onCreated(function () {
     //订阅：码表库
     handle_mbk = this.subscribe('xitongguanli_mabiaoxx');
     //订阅：项目库
-    handle_xmk = this.subscribe('zijinbofu_xiangmuk');
+    handle_xmk = this.subscribe('zijinbofu_xiangmuk',Session.get('user').quanxianxx);
     //订阅：编号信息
     this.subscribe('xitongguanli_bianhaoxx');
     //保存原始数据的变量
