@@ -25,6 +25,9 @@ Meteor.startup(function () {
     Meteor.publish('xitongguanli_mabiaoxx', function () {
         return ts_gc_mabiaoxx.find({});
     });
+    Meteor.publish('xitongguanli_zuzhuqxgl', function () {
+        return ts_gc_zuzhijg.find({});
+    });
     Meteor.publish('zijinbofu_gongdanxx', function (quanxianxx) {
         var chaxuntj = [];
         if(quanxianxx){
