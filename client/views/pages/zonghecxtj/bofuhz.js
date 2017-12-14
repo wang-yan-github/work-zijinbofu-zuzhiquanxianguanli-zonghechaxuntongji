@@ -36,91 +36,96 @@ Template.gongchengzjbfhz.helpers({
 });
 
 Template.gongchengzjbfhz.rendered = function(){
-    Tracker.autorun(function () {
+    Tracker.autorun(function (computation) {
+
         // 项目库数据
         var xiangmuk = tb_gc_xiangmuk.find().fetch();
+        // 返回数据-资金拨付汇总信息
+        var fanhui_zijinbfhzxx = new Array();
+
+        for (var i in xiangmuk){
+
+            // 临时变量-支付金额
+            var zhifuje = 0;
+            // 临时变量-累计拨付金额
+            var leijibfje = 0;
+
+            // 合同信息
+            for(var j in xiangmuk[i].xiangmuhtxx){
+
+                var result = new Array();
+                result[0] = xiangmuk[i].xiangmund;
+                result[1] = xiangmuk[i].xiangmumc;
+                result[2] = xiangmuk[i].xiangmuflmc;
+
+
+                // 临时变量-支付金额
+                zhifuje = 0;
+                // 临时变量-累计拨付金额
+                leijibfje = 0;
+
+                result[3] = xiangmuk[i].xiangmuhtxx[j].danweimc;
+                result[4] = xiangmuk[i].xiangmuhtxx[j].fuwulxmc;
+                result[5] = '';
+                result[6] = xiangmuk[i].xiangmuhtxx[j].hetongje;
+                result[7] = xiangmuk[i].xiangmuhtxx[j].zhibaoj;
+
+                for(var k in xiangmuk[i].xiangmuhtxx[j].zijinbfxx){
+
+                    zhifuje += parseFloat(xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].zhifuje);
+                    leijibfje += parseFloat(xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].leijibfje);
+
+                }
+
+                // 页面-支付金额
+                result[8] = zhifuje;
+                // 页面-累计拨付金额
+                result[9] = leijibfje;
+                fanhui_zijinbfhzxx.push(result);
+
+            }
+
+            // 标段合同信息
+            for(var j in xiangmuk[i].biaoduanhtxx){
+
+                var result = new Array();
+                result[0] = xiangmuk[i].xiangmund;
+                result[1] = xiangmuk[i].xiangmumc;
+                result[2] = xiangmuk[i].xiangmuflmc;
+                result[3] = xiangmuk[i].biaoduanhtxx[j].danweimc;
+                result[4] = xiangmuk[i].biaoduanhtxx[j].fuwulxmc;
+                result[5] = xiangmuk[i].biaoduanhtxx[j].biaoduanmc;
+
+                result[6] = xiangmuk[i].biaoduanhtxx[j].hetongje;
+                result[7] = xiangmuk[i].biaoduanhtxx[j].zhibaoj;
+
+                for(var k in xiangmuk[i].biaoduanhtxx[j].zijinbfxx){
+
+                    zhifuje += parseFloat(xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].zhifuje);
+                    leijibfje += parseFloat(xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].leijibfje);
+
+                }
+
+                // 页面-支付金额
+                result[8] = zhifuje;
+                // 页面-累计拨付金额
+                result[9] = leijibfje;
+                fanhui_zijinbfhzxx.push(result);
+
+            }
+        }
+
         if(handle_xmk_hz.ready()){
+
             Tracker.afterFlush(function () {
+
                 if ($('.dataTables-example').hasClass('dataTable')) {
                     dttable = $('.dataTables-example').dataTable();
-                    dttable.fnClearTable(); //清空一下 table
-                    dttable.fnDestroy(); //还原初始化了的 datatable
+                    dttable.fnClearTable(); // 清空一下 table
+                    dttable.fnDestroy(); // 还原初始化了的 datatable
                 }
 
-                // 返回数据-资金拨付汇总信息
-                var fanhui_zijinbfhzxx = new Array();
-
-                for (var i in xiangmuk){
-
-                    // 临时变量-支付金额
-                    var zhifuje = 0;
-                    // 临时变量-累计拨付金额
-                    var leijibfje = 0;
-
-                    // 合同信息
-                    for(var j in xiangmuk[i].xiangmuhtxx){
-
-                        var result = new Array();
-                        result[0] = xiangmuk[i].xiangmund;
-                        result[1] = xiangmuk[i].xiangmumc;
-                        result[2] = xiangmuk[i].xiangmuflmc;
-
-
-                        // 临时变量-支付金额
-                        zhifuje = 0;
-                        // 临时变量-累计拨付金额
-                        leijibfje = 0;
-
-                        result[3] = xiangmuk[i].xiangmuhtxx[j].danweimc;
-                        result[4] = xiangmuk[i].xiangmuhtxx[j].fuwulxmc;
-                        result[5] = '';
-                        result[6] = xiangmuk[i].xiangmuhtxx[j].hetongje;
-                        result[7] = xiangmuk[i].xiangmuhtxx[j].zhibaoj;
-
-                        for(var k in xiangmuk[i].xiangmuhtxx[j].zijinbfxx){
-
-                            zhifuje += parseFloat(xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].zhifuje);
-                            leijibfje += parseFloat(xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].leijibfje);
-
-                        }
-
-                        // 页面-支付金额
-                        result[8] = zhifuje;
-                        // 页面-累计拨付金额
-                        result[9] = leijibfje;
-                        fanhui_zijinbfhzxx.push(result);
-
-                    }
-
-                    // 标段合同信息
-                    for(var j in xiangmuk[i].biaoduanhtxx){
-
-                        var result = new Array();
-                        result[0] = xiangmuk[i].xiangmund;
-                        result[1] = xiangmuk[i].xiangmumc;
-                        result[2] = xiangmuk[i].xiangmuflmc;
-                        result[3] = xiangmuk[i].biaoduanhtxx[j].danweimc;
-                        result[4] = xiangmuk[i].biaoduanhtxx[j].fuwulxmc;
-                        result[5] = xiangmuk[i].biaoduanhtxx[j].biaoduanmc;
-
-                        result[6] = xiangmuk[i].biaoduanhtxx[j].hetongje;
-                        result[7] = xiangmuk[i].biaoduanhtxx[j].zhibaoj;
-
-                        for(var k in xiangmuk[i].biaoduanhtxx[j].zijinbfxx){
-
-                            zhifuje += parseFloat(xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].zhifuje);
-                            leijibfje += parseFloat(xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].leijibfje);
-
-                        }
-
-                        // 页面-支付金额
-                        result[8] = zhifuje;
-                        // 页面-累计拨付金额
-                        result[9] = leijibfje;
-                        fanhui_zijinbfhzxx.push(result);
-
-                    }
-                }
+                computation.stop();
 
                 // datatable 配置信息
                 var appdt = {
@@ -265,10 +270,11 @@ Template.gongchengzjbfhz.rendered = function(){
                         );
                     }
                 };
-                $('.dataTables-example').dataTable(appdt);
 
+                var oTable = $('.dataTables-example').dataTable(appdt);
                 // 隐藏搜索按钮
                 $(".dataTables_filter :first").hide();
+
             });
         }
     })

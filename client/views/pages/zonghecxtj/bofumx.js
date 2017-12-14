@@ -55,138 +55,145 @@ function mabiaoffmz(mabiaomc) {
 
 /* 事件处理 */
 Template.gongchengzjbfmx.rendered = function(){
-    Tracker.autorun(function () {
+
+    Tracker.autorun(function (computation) {
+
         // 项目库数据
         var xiangmuk = tb_gc_xiangmuk.find().fetch();
+
+        // 返回数据-资金拨付信息
+        var fanhui_zijinbfhzxx = new Array();
+
+        for (var i in xiangmuk){
+
+            // 合同
+            for(var j in xiangmuk[i].xiangmuhtxx){
+
+                // 临时-返回数据
+                var result =  new Array();
+                // 临时-返回list数据
+                var resultList = new Array();
+                // 项目库年度
+                result[0] = xiangmuk[i].xiangmund;
+                // 项目库名称
+                result[1] = xiangmuk[i].xiangmumc;
+                // 项目库分类名称
+                result[2] = xiangmuk[i].xiangmuflmc;
+                // 单位名称
+                result[3] = xiangmuk[i].xiangmuhtxx[j].danweimc;
+                // 服务类型名称
+                result[4] = xiangmuk[i].xiangmuhtxx[j].fuwulxmc;
+                // 项目状态
+                result[5] = xiangmuk[i].gongchengzt;
+                // 项目库标识
+                result[6] = 'xiangmuhtxx' + i + j;
+
+                for(var k in xiangmuk[i].xiangmuhtxx[j].zijinbfxx){
+
+                    // 临时-返回数据明细
+                    var resultmx = new Array();
+                    // 状态
+                    resultmx[0] = parseFloat(k)+1;
+                    // 合同金额
+                    resultmx[1] = xiangmuk[i].xiangmuhtxx[j].hetongje;
+                    // 质保金
+                    resultmx[2] = xiangmuk[i].xiangmuhtxx[j].zhibaoj;
+                    // 支付金额
+                    resultmx[3] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].zhifuje;
+                    // 累计拨付金额
+                    resultmx[4] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].leijibfje;
+                    // 审批单编号
+                    resultmx[5] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].shenpidbh;
+                    // 填报人
+                    resultmx[6] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].tianbaor;
+                    // 初审人
+                    resultmx[7] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].chushenr;
+                    // 确认支付时间
+                    resultmx[8] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].querenzfsj;
+                    // 审批表附件
+                    resultmx[9] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].shenpifj;
+
+                    // 返回明细
+                    resultList.push(resultmx);
+                }
+
+                // 明细赋值
+                result.bofuxxmf = resultList;
+                // 返回-资金拨付信息
+                fanhui_zijinbfhzxx.push(result);
+            }
+            //console.log(fanhui_zijinbfhzxx);
+
+            // 标段
+            for(var j in xiangmuk[i].biaoduanhtxx){
+
+                // 临时-返回数据
+                var result =  new Array();
+                // 临时-返回list数据
+                var resultList = new Array();
+                // 项目库年度
+                result[0] = xiangmuk[i].xiangmund;
+                // 项目库名称
+                result[1] = xiangmuk[i].xiangmumc;
+                // 项目库分类名称
+                result[2] = xiangmuk[i].xiangmuflmc;
+                // 单位名称
+                result[3] = xiangmuk[i].biaoduanhtxx[j].danweimc;
+                // 服务类型名称
+                result[4] = xiangmuk[i].biaoduanhtxx[j].fuwulxmc;
+                // 项目状态
+                result[5] = xiangmuk[i].gongchengzt;
+                // 项目库标识
+                result[6] = 'biaoduanhtxx' + i + j;
+
+                for(var k in xiangmuk[i].biaoduanhtxx[j].zijinbfxx){
+
+                    // 临时-返回数据明细
+                    var resultmx = new Object();
+                    // 状态
+                    resultmx[0] = parseFloat(k)+1;
+                    // 合同金额
+                    resultmx[1] = xiangmuk[i].biaoduanhtxx[j].hetongje;
+                    // 质保金
+                    resultmx[2] = xiangmuk[i].biaoduanhtxx[j].zhibaoj;
+                    // 支付金额
+                    resultmx[3] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].zhifuje;
+                    // 累计拨付金额
+                    resultmx[4] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].leijibfje;
+                    // 审批单编号
+                    resultmx[5] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].shenpidbh;
+                    // 填报人
+                    resultmx[6] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].tianbaor;
+                    // 初审人
+                    resultmx[7] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].chushenr;
+                    // 确认支付时间
+                    resultmx[8] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].querenzfsj;
+                    // 审批表附件
+                    resultmx[9] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].shenpifj;
+
+                    // 返回明细
+                    resultList.push(resultmx);
+                }
+
+                // 明细赋值
+                result.bofuxxmf = resultList;
+                // 返回-资金拨付信息
+                fanhui_zijinbfhzxx.push(result);
+            }
+
+        }
+
         if(handle_xmk_mx.ready()){
+
             Tracker.afterFlush(function () {
+
                 if ($('.dataTables-example').hasClass('dataTable')) {
                     dttable = $('.dataTables-example').dataTable();
-                    dttable.fnClearTable(); //清空一下 table
-                    dttable.fnDestroy(); //还原初始化了的 datatable
+                    dttable.fnClearTable(); // 清空一下 table
+                    dttable.fnDestroy(); // 还原初始化了的 datatable
                 }
 
-                // 返回数据-资金拨付信息
-                var fanhui_zijinbfhzxx = new Array();
-
-                for (var i in xiangmuk){
-
-                    // 合同
-                    for(var j in xiangmuk[i].xiangmuhtxx){
-
-                        // 临时-返回数据
-                        var result =  new Array();
-                        // 临时-返回list数据
-                        var resultList = new Array();
-                        // 项目库年度
-                        result[0] = xiangmuk[i].xiangmund;
-                        // 项目库名称
-                        result[1] = xiangmuk[i].xiangmumc;
-                        // 项目库分类名称
-                        result[2] = xiangmuk[i].xiangmuflmc;
-                        // 单位名称
-                        result[3] = xiangmuk[i].xiangmuhtxx[j].danweimc;
-                        // 服务类型名称
-                        result[4] = xiangmuk[i].xiangmuhtxx[j].fuwulxmc;
-                        // 项目状态
-                        result[5] = xiangmuk[i].gongchengzt;
-                        // 项目库标识
-                        result[6] = 'xiangmuhtxx' + i + j;
-
-                        for(var k in xiangmuk[i].xiangmuhtxx[j].zijinbfxx){
-
-                            // 临时-返回数据明细
-                            var resultmx = new Array();
-                            // 状态
-                            resultmx[0] = parseFloat(k)+1;
-                            // 合同金额
-                            resultmx[1] = xiangmuk[i].xiangmuhtxx[j].hetongje;
-                            // 质保金
-                            resultmx[2] = xiangmuk[i].xiangmuhtxx[j].zhibaoj;
-                            // 支付金额
-                            resultmx[3] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].zhifuje;
-                            // 累计拨付金额
-                            resultmx[4] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].leijibfje;
-                            // 审批单编号
-                            resultmx[5] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].shenpidbh;
-                            // 填报人
-                            resultmx[6] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].tianbaor;
-                            // 初审人
-                            resultmx[7] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].chushenr;
-                            // 确认支付时间
-                            resultmx[8] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].querenzfsj;
-                            // 审批表附件
-                            resultmx[9] = xiangmuk[i].xiangmuhtxx[j].zijinbfxx[k].shenpifj;
-
-                            // 返回明细
-                            resultList.push(resultmx);
-                        }
-
-                        // 明细赋值
-                        result.bofuxxmf = resultList;
-                        // 返回-资金拨付信息
-                        fanhui_zijinbfhzxx.push(result);
-                    }
-                    console.log(fanhui_zijinbfhzxx);
-
-                    // 标段
-                    for(var j in xiangmuk[i].biaoduanhtxx){
-
-                        // 临时-返回数据
-                        var result =  new Array();
-                        // 临时-返回list数据
-                        var resultList = new Array();
-                        // 项目库年度
-                        result[0] = xiangmuk[i].xiangmund;
-                        // 项目库名称
-                        result[1] = xiangmuk[i].xiangmumc;
-                        // 项目库分类名称
-                        result[2] = xiangmuk[i].xiangmuflmc;
-                        // 单位名称
-                        result[3] = xiangmuk[i].biaoduanhtxx[j].danweimc;
-                        // 服务类型名称
-                        result[4] = xiangmuk[i].biaoduanhtxx[j].fuwulxmc;
-                        // 项目状态
-                        result[5] = xiangmuk[i].gongchengzt;
-                        // 项目库标识
-                        result[6] = 'biaoduanhtxx' + i + j;
-
-                        for(var k in xiangmuk[i].biaoduanhtxx[j].zijinbfxx){
-
-                            // 临时-返回数据明细
-                            var resultmx = new Object();
-                            // 状态
-                            resultmx[0] = parseFloat(k)+1;
-                            // 合同金额
-                            resultmx[1] = xiangmuk[i].biaoduanhtxx[j].hetongje;
-                            // 质保金
-                            resultmx[2] = xiangmuk[i].biaoduanhtxx[j].zhibaoj;
-                            // 支付金额
-                            resultmx[3] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].zhifuje;
-                            // 累计拨付金额
-                            resultmx[4] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].leijibfje;
-                            // 审批单编号
-                            resultmx[5] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].shenpidbh;
-                            // 填报人
-                            resultmx[6] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].tianbaor;
-                            // 初审人
-                            resultmx[7] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].chushenr;
-                            // 确认支付时间
-                            resultmx[8] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].querenzfsj;
-                            // 审批表附件
-                            resultmx[9] = xiangmuk[i].biaoduanhtxx[j].zijinbfxx[k].shenpifj;
-
-                            // 返回明细
-                            resultList.push(resultmx);
-                        }
-
-                        // 明细赋值
-                        result.bofuxxmf = resultList;
-                        // 返回-资金拨付信息
-                        fanhui_zijinbfhzxx.push(result);
-                    }
-
-                }
+                computation.stop();
 
                 // datatable 配置信息
                 var appdt = {
@@ -248,84 +255,88 @@ Template.gongchengzjbfmx.rendered = function(){
                     }
                 };
 
-                var oTable = $('.dataTables-example').dataTable(appdt);
-
+                $('.dataTables-example').dataTable(appdt);
                 // 隐藏搜索按钮
                 $(".dataTables_filter :first").hide();
 
+                var oTable = $('.dataTables-example').dataTable();
 
-                $('.dataTables-example').on('click', ' tbody .row-details',
-                    function() {
-                        var nTr = $(this);
-                        if (oTable.fnIsOpen(nTr)) //判断是否已打开
-                        {
-                            /!* This row is already open - close it *!/
-                            $(this).addClass("row-details-close").removeClass("row-details-open");
-                            oTable.fnClose(nTr);
-                        } else {
-                            /!* Open this row *!/
-                            $(this).addClass("row-details-open").removeClass("row-details-close");
-                            //  alert($(this).attr("data_id"));
-                            //oTable.fnOpen( nTr,
-                            // 调用方法显示详细信息 data_id为自定义属性 存放配置ID
-                            fnFormatDetails(nTr, $(this).attr("data_id"));
-                        }
-                    }
-                );
-
-                function fnFormatDetails(nTr, pdataId) {
-                    //根据配置Id 异步查询数据
-                    var array = fanhui_zijinbfhzxx;
-                    for(var i in array){
-
-                        if (pdataId == array[i][6]) {
-                            var sOut = '';
-                            sOut += '<table class="table table-striped table-bordered table-hover">'
-                            sOut +=     '<thead>';
-                            sOut +=         '<tr>';
-                            sOut +=             '<th>状态</th>';
-                            sOut +=             '<th title="万元">合同金额</th>';
-                            sOut +=             '<th title="万元">质保金</th>';
-                            sOut +=             '<th title="万元">支付情况</th>';
-                            sOut +=             '<th title="万元">已累计拨付资金</th>';
-                            sOut +=             '<th >审批编号</th>';
-                            sOut +=             '<th >填报人</th>';
-                            sOut +=             '<th >初审人</th>';
-                            sOut +=             '<th >确认支付时间</th>';
-                            sOut +=             '<th>审核表及附件</th>';
-                            sOut +=           '</tr>';
-                            sOut +=         '</thead>';
-                            sOut +=         '<tbody>';
-                            for (var j in array[i].bofuxxmf) {
-
-                                // '<center> <p style="width:70%">' + array[i].bofuxxmf[j][0] + '</p></center>';
-
-                                sOut +=           '<tr>';
-                                sOut +=              '<td><span class="label label-primary">第' + array[i].bofuxxmf[j][0] + '次拨付</span></td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][1] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][2] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][3] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][4] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][5] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][6] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][7] +'</td>';
-                                sOut +=              '<td>'+ array[i].bofuxxmf[j][8] +'</td>';
-                                sOut +=              '<td><button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">'+ array[i].bofuxxmf[j][9] +'</button></td>';
-                                sOut +=           '</tr>';
+                Tracker.autorun(function () {
+                    $('.dataTables-example').on('click', ' tbody .row-details',
+                        function() {
+                            var nTr = $(this);
+                            if (oTable.fnIsOpen(nTr)) //判断是否已打开
+                            {
+                                /!* This row is already open - close it *!/
+                                $(this).addClass("row-details-close").removeClass("row-details-open");
+                                oTable.fnClose(nTr);
+                            } else {
+                                /!* Open this row *!/
+                                $(this).addClass("row-details-open").removeClass("row-details-close");
+                                //  alert($(this).attr("data_id"));
+                                //oTable.fnOpen( nTr,
+                                // 调用方法显示详细信息 data_id为自定义属性 存放配置ID
+                                fnFormatDetails(nTr, $(this).attr("data_id"));
                             }
-                            sOut +=       '</tbody>';
-                            sOut +=  '</table>';
-                            oTable.fnOpen(nTr, sOut, 'details');
+                        }
+                    );
+
+                    function fnFormatDetails(nTr, pdataId) {
+                        //根据配置Id 异步查询数据
+                        debugger;
+                        var array = fanhui_zijinbfhzxx;
+                        for(var i in array){
+
+                            if (pdataId == array[i][6]) {
+                                var sOut = '';
+                                sOut += '<table class="table table-striped table-bordered table-hover">'
+                                sOut +=     '<thead>';
+                                sOut +=         '<tr>';
+                                sOut +=             '<th>状态</th>';
+                                sOut +=             '<th title="万元">合同金额</th>';
+                                sOut +=             '<th title="万元">质保金</th>';
+                                sOut +=             '<th title="万元">支付情况</th>';
+                                sOut +=             '<th title="万元">已累计拨付资金</th>';
+                                sOut +=             '<th >审批编号</th>';
+                                sOut +=             '<th >填报人</th>';
+                                sOut +=             '<th >初审人</th>';
+                                sOut +=             '<th >确认支付时间</th>';
+                                sOut +=             '<th>审核表及附件</th>';
+                                sOut +=           '</tr>';
+                                sOut +=         '</thead>';
+                                sOut +=         '<tbody>';
+                                for (var j in array[i].bofuxxmf) {
+
+                                    // '<center> <p style="width:70%">' + array[i].bofuxxmf[j][0] + '</p></center>';
+
+                                    sOut +=           '<tr>';
+                                    sOut +=              '<td><span class="label label-primary">第' + array[i].bofuxxmf[j][0] + '次拨付</span></td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][1] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][2] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][3] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][4] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][5] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][6] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][7] +'</td>';
+                                    sOut +=              '<td>'+ array[i].bofuxxmf[j][8] +'</td>';
+                                    sOut +=              '<td><button class="btn-white btn btn-xs" data-toggle="modal" data-target="#myModal">'+ array[i].bofuxxmf[j][9] +'</button></td>';
+                                    sOut +=           '</tr>';
+                                }
+                                sOut +=       '</tbody>';
+                                sOut +=  '</table>';
+                                oTable.fnOpen(nTr, sOut, 'details');
+
+                            }
 
                         }
+                    };
+                });
 
-                    }
-                };
 
 
             });
         }
-    });
+    })
 };
 
 /* 事件处理 */
@@ -370,7 +381,7 @@ Template.gongchengzjbfmx.events({
 
 
         if(xmnd=='全部' && xmmc=='' && dwmc=='' && xmfl=='全部' && fwlx=='全部' && xmzt=='全部'){
-            console.log(1);
+            //console.log(1);
             table.columns().search('');
         }
 
@@ -394,4 +405,11 @@ Template.gongchengzjbfmx.events({
             $(".dataTables-example").dataTable().fnDraw(false);
         });
     }
+});
+
+Template.gongchengzjbfmx.onDestroyed(function () {
+    // 销毁
+    //Tracker.Dependency();
+    //Tracker.flush();
+    //Tracker.afterFlush();
 });
